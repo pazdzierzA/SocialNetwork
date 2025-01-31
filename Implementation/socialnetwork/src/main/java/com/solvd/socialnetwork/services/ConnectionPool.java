@@ -15,10 +15,10 @@ public class ConnectionPool {
 	private static final String JDBC_URL = "jdbc:mysql://127.0.0.1:3307/social_networks";
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "";
-	private Integer size;
+	private Integer size = 10;
 	private static ConnectionPool INSTANCE = null;
 
-	private ConnectionPool(Integer size) {
+	private ConnectionPool() {
 		HikariConfig config = new HikariConfig();
 		config.setJdbcUrl(JDBC_URL);
 		config.setUsername(USERNAME);
@@ -30,9 +30,9 @@ public class ConnectionPool {
 		this.dataSource = new HikariDataSource();
 	}
 
-	public static ConnectionPool getInstance(Integer size) {
+	public static ConnectionPool getInstance() {
 		if (INSTANCE == null) {
-			INSTANCE = new ConnectionPool(size);
+			INSTANCE = new ConnectionPool();
 
 		}
 		return INSTANCE;
@@ -61,9 +61,6 @@ public class ConnectionPool {
 		return size;
 	}
 
-	public void setSize(Integer size) {
-		this.size = size;
-	}
 
 	public int getAvailableConnections() {
 		return dataSource.getHikariPoolMXBean().getIdleConnections();

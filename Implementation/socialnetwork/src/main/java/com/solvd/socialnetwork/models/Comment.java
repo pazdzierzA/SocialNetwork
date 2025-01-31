@@ -13,6 +13,12 @@ public class Comment extends BaseEntity {
 		this.postId = postId;
 	}
 
+	public Comment(Long id) {
+		super(id);
+	}
+	
+	public Comment() {};
+
 	public String getText() {
 		return text;
 	}

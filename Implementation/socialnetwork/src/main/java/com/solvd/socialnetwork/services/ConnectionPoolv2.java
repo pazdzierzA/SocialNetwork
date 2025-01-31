@@ -15,11 +15,10 @@ public class ConnectionPoolv2 {
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "";
 	private BlockingQueue<Connection> connections;
-	private Integer size;
+	private static Integer size = 10;
 	private static ConnectionPoolv2 INSTANCE = null;
 
 	private ConnectionPoolv2(Integer size) {
-		this.size = size;
 		this.connections = new ArrayBlockingQueue<>(size);
 		for (int i = 0; i < size; i++) {
 			try {
@@ -35,11 +34,8 @@ public class ConnectionPoolv2 {
 		return size;
 	}
 
-	public void setSize(Integer size) {
-		this.size = size;
-	}
 
-	public static ConnectionPoolv2 getInstance(Integer size) {
+	public static ConnectionPoolv2 getInstance() {
 		if (INSTANCE == null) {
 			INSTANCE = new ConnectionPoolv2(size);
 
@@ -53,9 +49,8 @@ public class ConnectionPoolv2 {
 
 	public void releaseConnection(Connection connection) {
 		if (connection != null) {
-			logger.info(Thread.currentThread().getName() + " releasing connection: ");
 			connections.offer(connection);
-			logger.info("Queue state after release: " + connections);
+			
 		}
 	}
 

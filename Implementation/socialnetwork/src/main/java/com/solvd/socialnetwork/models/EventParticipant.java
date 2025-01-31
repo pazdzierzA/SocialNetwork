@@ -15,6 +15,10 @@ public class EventParticipant extends BaseEntity {
 		this.userId = userId;
 	}
 
+	public EventParticipant() {
+	
+	}
+
 	public ParticipantStatus getStatus() {
 		return status;
 	}

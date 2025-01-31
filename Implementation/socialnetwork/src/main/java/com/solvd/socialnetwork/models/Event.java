@@ -24,6 +24,19 @@ public class Event extends BaseEntity {
 		this.participants = participants;
 	}
 
+	public Event() {
+
+	}
+	
+	public Event(Long id, String name, String location, LocalDate startDate, LocalDate endDate, Long creatorId) {
+		super(id);
+		this.name = name;
+		this.location = location;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.creatorId = creatorId;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -72,4 +85,5 @@ public class Event extends BaseEntity {
 		this.participants = participants;
 	}
 
+	
 }

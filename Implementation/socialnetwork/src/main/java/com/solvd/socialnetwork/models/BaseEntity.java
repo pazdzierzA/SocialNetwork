@@ -3,9 +3,8 @@ package com.solvd.socialnetwork.models;
 public abstract class BaseEntity {
     private Long id;
 
-    
+    public BaseEntity() {};
 	public BaseEntity(Long id) {
-		super();
 		this.id = id;
 	}
 
