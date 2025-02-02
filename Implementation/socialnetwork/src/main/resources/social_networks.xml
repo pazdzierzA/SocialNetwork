@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<social_networks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="social_networks_schema.xsd">
+
+	<!-- User 1 -->
+	<users>
+		<user>
+			<id>1</id>
+			<login>john_doe</login>
+			<email>john.doe@example.com</email>
+			<firstName>John</firstName>
+			<lastName>Doe</lastName>
+			<birthDate>1990-05-15</birthDate>
+		</user>
+		<user>
+			<id>2</id>
+			<login>jane_smith</login>
+			<email>jane.smith@example.com</email>
+			<firstName>Jane</firstName>
+			<lastName>Smith</lastName>
+			<birthDate>1985-07-22</birthDate>
+		</user>
+
+	</users>
+
+
+	<posts>
+		<post>
+			<id>1</id>
+			<text>This is my first post!</text>
+			<title>Introduction</title>
+			<likeQuantity>20</likeQuantity>
+			<commentQuantity>5</commentQuantity>
+			<creatorId>1</creatorId>
+		</post>
+		<post>
+			<id>2</id>
+			<text>What a beautiful day!</text>
+			<title>Weather</title>
+			<likeQuantity>50</likeQuantity>
+			<commentQuantity>10</commentQuantity>
+			<creatorId>2</creatorId>
+		</post>
+	</posts>
+
+
+	<groups>
+		<group>
+			<id>1</id>
+			<groupName>Tech Enthusiasts</groupName>
+			<groupType>Public</groupType>
+			<groupCreatorId>1</groupCreatorId>
+		</group>
+		<group>
+			<id>2</id>
+			<groupName>Music Lovers</groupName>
+			<groupType>Private</groupType>
+			<groupCreatorId>2</groupCreatorId>
+		</group>
+	</groups>
+
+
+	<groupsMembers>
+
+		<groupsMember>
+			<id>1</id>
+			<userId>1</userId>
+			<groupId>1</groupId>
+			<userRole>Admin</userRole>
+
+		</groupsMember>
+
+		<groupsMember>
+			<id>2</id>
+			<userId>2</userId>
+			<groupId>1</groupId>
+			<userRole>Member</userRole>
+
+		</groupsMember>
+
+	</groupsMembers>
+
+
+	<stories>
+		<story>
+			<id>1</id>
+			<text>Running time!</text>
+			<pictureStoryUrl>https://example.com/images/story1.jpg</pictureStoryUrl>
+			<storyCreatorId>1</storyCreatorId>
+		</story>
+		<story>
+			<id>2</id>
+			<text>Time to play!</text>
+			<pictureStoryUrl>https://example.com/images/story2.jpg</pictureStoryUrl>
+			<storyCreatorId>2</storyCreatorId>
+		</story>
+
+	</stories>
+	<comments>
+		<comment>
+			<id>1</id>
+			<text>Great post, I totally agree with you!</text>
+			<authorId>2</authorId>
+			<postId>1</postId>
+		</comment>
+		<comment>
+			<id>2</id>
+			<text>Yes, it's an amazing day!</text>
+			<authorId>1</authorId>
+			<postId>2</postId>
+		</comment>
+	</comments>
+
+
+	<likes>
+		<like>
+			<id>1</id>
+			<postId>1</postId>
+			<userId>2</userId>
+		</like>
+		<like>
+			<id>2</id>
+			<postId>2</postId>
+			<userId>1</userId>
+		</like>
+	</likes>
+
+</social_networks>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+	<xs:element name="social_networks">
+		<xs:complexType>
+			<xs:sequence>
+				<!-- User Definition -->
+				<xs:element name="users">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="user" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="id" type="xs:long" />
+										<xs:element name="login"
+											type="xs:string" />
+										<xs:element name="email"
+											type="xs:string" />
+										<xs:element name="firstName"
+											type="xs:string" />
+										<xs:element name="lastName"
+											type="xs:string" />
+										<xs:element name="birthDate"
+											type="xs:date" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+
+				<!-- Post Definition -->
+				<xs:element name="posts">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="post" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="id" type="xs:long" />
+										<xs:element name="text" type="xs:string" />
+										<xs:element name="title"
+											type="xs:string" />
+										<xs:element name="likeQuantity"
+											type="xs:integer" />
+										<xs:element name="commentQuantity"
+											type="xs:integer" />
+										<xs:element name="creatorId"
+											type="xs:long" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<!-- Group Definition -->
+				<xs:element name="groups">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="group" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="id" type="xs:long" />
+										<xs:element name="groupName"
+											type="xs:string" />
+										<xs:element name="groupType"
+											default="Private">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration
+														value="Private" />
+													<xs:enumeration
+														value="Public" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="groupCreatorId"
+											type="xs:long" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+
+				<!-- Group Memeber Definition -->
+				<xs:element name="groupsMembers">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="groupsMember"
+								maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="id" type="xs:long" />
+										<xs:element name="userId" type="xs:long" />
+										<xs:element name="groupId"
+											type="xs:long" />
+										<xs:element name="userRole"
+											minOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration
+														value="Admin" />
+													<xs:enumeration
+														value="Member" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<!-- Story Definition -->
+				<xs:element name="stories">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="story" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="id" type="xs:long" />
+										<xs:element name="text" type="xs:string" />
+										<xs:element name="pictureStoryUrl"
+											type="xs:string" />
+										<xs:element name="storyCreatorId"
+											type="xs:long" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+
+				<!-- Comment Definition -->
+				<xs:element name="comments">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="comment" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="id" type="xs:long" />
+										<xs:element name="text" type="xs:string" />
+										<xs:element name="authorId"
+											type="xs:long" />
+										<xs:element name="postId" type="xs:long" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+
+				<!-- Like Definition -->
+				<xs:element name="likes">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="like" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="id" type="xs:long" />
+										<xs:element name="postId" type="xs:long" />
+										<xs:element name="userId" type="xs:long" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
