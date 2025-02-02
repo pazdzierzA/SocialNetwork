@@ -1,0 +1,22 @@
+USE social_networks;
+
+ALTER TABLE Users
+ADD COLUMN description varchar(500) NULL;
+
+ALTER TABLE Posts
+ADD COLUMN  coop_creator_id bigint(32) UNSIGNED NULL,
+ADD COLUMN share_quantity INT NOT NULL DEFAULT 0;
+
+ALTER TABLE Posts
+ADD CONSTRAINT fk_coop_creator_id
+FOREIGN KEY (coop_creator_id)
+REFERENCES Users(id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+ALTER TABLE Stories 
+ADD COLUMN time_creation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+
+
+

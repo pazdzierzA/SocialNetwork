@@ -21,7 +21,7 @@ public class CommentDAO extends AbstractMySQLDAO<Comment> implements ICommentDAO
 	public final static String GET_BY_AUTHOR_ID = "SELECT * FROM Comments WHERE author_id =?";
 	public final static String GET_BY_POST_ID = "SELECT * FROM Comments WHERE post_id =?";
 	public final static String REMOVE_BY_ID = "DELETE FROM Comments WHERE id =?";
-	public final static String UPDATE = "UPDATE Comments SET text =?, author_id = ?,post_id =?, WHERE id=? ";
+	public final static String UPDATE = "UPDATE Comments SET text =?, author_id = ?,post_id =? WHERE id=? ";
 	public final static String INSERT = "INSERT INTO Comments (text,author_id,post_id) VALUES (?,?,?)";
 
 	@Override
@@ -114,10 +114,10 @@ public class CommentDAO extends AbstractMySQLDAO<Comment> implements ICommentDAO
 						}
 					}
 				} else {
-					throw new IllegalStateException("Saving connection failed, no rows affected.");
+					throw new IllegalStateException("Saving comment failed, no rows affected.");
 				}
 			} catch (SQLException e) {
-				logger.error("Error save connection with id {} : {}", entity.getId(), e);
+				logger.error("Error save comment with id {} : {}", entity.getId(), e);
 			}
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
@@ -137,7 +137,7 @@ public class CommentDAO extends AbstractMySQLDAO<Comment> implements ICommentDAO
 				statement.setLong(4, entity.getId());
 				int affectedRows = statement.executeUpdate();
 				if (affectedRows == 0) {
-					throw new IllegalStateException("Update failed, no notification found with id: " + entity.getId());
+					throw new IllegalStateException("Update failed, no comment found with id: " + entity.getId());
 				}
 			} catch (SQLException e) {
 				logger.error("Error upgrade connection with id {} : {}", entity.getId(), e);

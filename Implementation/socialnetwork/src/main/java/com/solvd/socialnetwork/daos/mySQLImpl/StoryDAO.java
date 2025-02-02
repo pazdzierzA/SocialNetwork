@@ -16,7 +16,7 @@ import com.solvd.socialnetwork.services.ConnectionPool;
 public class StoryDAO extends AbstractMySQLDAO<Story> implements IStoryDAO{
 	private final static Logger logger = LogManager.getLogger(StoryDAO.class.getName());
 	public final static String GET_BY_ID = "SELECT * FROM Stories WHERE id = ?";
-	public final static String INSERT = "INSERT INTO Stories (text, pictureStoryUrl,storyCreatorId ) VALUES (?, ?,?)";
+	public final static String INSERT = "INSERT INTO Stories (text, picture_story_url,story_creator_id ) VALUES (?, ?,?)";
 	public final static String UPDATE = "UPDATE Stories  SET post_id =?,user_id = ?  WHERE id = ?";
 	public final static String REMOVE_BY_ID = "DELETE FROM Stories  WHERE id = ?";
 	public final static String REMOVE_BY_STORY_CREATOR_ID = "SELECT * FROM Stories WHERE story_creator_id = ?";
