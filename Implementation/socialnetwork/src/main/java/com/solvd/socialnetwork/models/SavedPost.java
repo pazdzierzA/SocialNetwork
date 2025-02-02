@@ -11,6 +11,10 @@ public class SavedPost extends BaseEntity{
 		this.userId = userId;
 	}
 
+	public SavedPost() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getPostId() {
 		return postId;
 	}

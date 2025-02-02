@@ -13,6 +13,10 @@ public class Message extends BaseEntity {
 		this.recipientId = recipientId;
 	}
 
+	public Message() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getText() {
 		return text;
 	}

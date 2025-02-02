@@ -1,8 +1,8 @@
 package com.solvd.socialnetwork.enums;
 
 public enum NotificationType {
-	LIKE("like"), COMMENT("comment"), FRIEND_REQUEST("friend request"), MESSAGE("message");
-
+	LIKE("Like"), COMMENT("Comment"), FRIEND_REQUEST("Friend_Request"), MESSAGE("Message");
+	// in data base Friend_Requests
 	private String name;
 
 	private NotificationType(String name) {
@@ -16,5 +16,6 @@ public enum NotificationType {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 }

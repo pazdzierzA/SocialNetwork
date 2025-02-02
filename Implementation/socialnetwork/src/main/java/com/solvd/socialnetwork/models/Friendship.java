@@ -7,15 +7,19 @@ public class Friendship extends BaseEntity {
 
 	private FriendshipStatus status;
 	private FriendshipType type;
-	private Long user_id;
-	private Long friend_id;
+	private Long userId;
+	private Long friendId;
 
 	public Friendship(Long id, FriendshipStatus status, FriendshipType type, Long user_id, Long friend_id) {
 		super(id);
 		this.status = status;
 		this.type = type;
-		this.user_id = user_id;
-		this.friend_id = friend_id;
+		this.userId = user_id;
+		this.friendId = friend_id;
+	}
+
+	public Friendship() {
+	
 	}
 
 	public FriendshipStatus getStatus() {
@@ -34,20 +38,20 @@ public class Friendship extends BaseEntity {
 		this.type = type;
 	}
 
-	public Long getUser_id() {
-		return user_id;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(Long user_id) {
-		this.user_id = user_id;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
-	public Long getFriend_id() {
-		return friend_id;
+	public Long getFriendId() {
+		return friendId;
 	}
 
-	public void setFriend_id(Long friend_id) {
-		this.friend_id = friend_id;
+	public void setFriendId(Long friendId) {
+		this.friendId = friendId;
 	}
 
 }

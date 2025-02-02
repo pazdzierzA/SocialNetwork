@@ -14,6 +14,9 @@ public class GroupMember extends BaseEntity {
 		this.userId = userId;
 	}
 
+	public GroupMember() {
+	}
+
 	public UserRole getUserRole() {
 		return userRole;
 	}

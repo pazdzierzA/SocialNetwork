@@ -21,6 +21,17 @@ public class Group extends BaseEntity{
 		this.groupMembers = groupMembers;
 	}
 
+	public Group() {
+
+	}
+
+	public Group(Long id, String groupName, GroupType groupType, Long groupCreatorId) {
+		super(id);
+		this.groupName = groupName;
+		this.groupType = groupType;
+		this.groupCreatorId = groupCreatorId;
+	}
+
 	public String getGroupName() {
 		return groupName;
 	}

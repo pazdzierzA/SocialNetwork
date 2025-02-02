@@ -14,6 +14,8 @@ public class Notification extends BaseEntity{
 		this.type = type;
 		this.userId = userId;
 	}
+	
+	public Notification() {}
 
 	public String getText() {
 		return text;

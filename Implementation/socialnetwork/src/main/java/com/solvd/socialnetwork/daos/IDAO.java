@@ -1,5 +1,6 @@
 package com.solvd.socialnetwork.daos;
 
+
 public interface IDAO<T> {
 	T getById (Long id);
 	T save (T entity);

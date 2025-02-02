@@ -12,22 +12,36 @@ public class Post extends BaseEntity{
 	
 	private List<Comment> comments = new ArrayList<Comment>();
 	private List<Like> likes = new ArrayList<Like>();
-	
+
+	public Post() {
+		
+	}
 	public Post(Long id) {
 		super(id);
 	}
 
-	public Post(Long id, String text, String title, Integer likeQuantity, Integer commentQuantity,
+	
+	public Post(Long id, String text, String title, Integer likeQuantity, Integer commentQuantity, Long creatorId) {
+		super(id);
+		this.text = text;
+		this.title = title;
+		this.likeQuantity = likeQuantity;
+		this.commentQuantity = commentQuantity;
+		this.creatorId =creatorId;
+	}
+	
+	public Post(Long id, String text, String title, Integer likeQuantity, Integer commentQuantity,Long creatorId,
 			List<Comment> comments, List<Like>likes) {
 		super(id);
 		this.text = text;
 		this.title = title;
 		this.likeQuantity = likeQuantity;
 		this.commentQuantity = commentQuantity;
+		this.creatorId =creatorId;
 		this.comments = comments;
 		this.likes = likes;
 	}
-
+	
 	public String getText() {
 		return text;
 	}

@@ -1,7 +1,7 @@
 package com.solvd.socialnetwork.enums;
 
 public enum FriendshipType {
-	CLOSE("close friends"),
+	CLOSE("close_friends"),
 	FAMILY("family"),
 	OTHERS("others");
 	

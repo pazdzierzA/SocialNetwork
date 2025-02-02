@@ -1,10 +1,10 @@
 package com.solvd.socialnetwork.enums;
 
 public enum ParticipantStatus {
-	GOING("going"),
-	INTERESTED("interested"),
-	NOT_GOING("not going"),
-	NO_INFORMATION("no inforamtion");
+	GOING("Going"),
+	INTERESTED("Interested"),
+	NOT_GOING("Not_going"),
+	NO_INFORMATION("No_inforamtion");
 	
 	private final String status;
 

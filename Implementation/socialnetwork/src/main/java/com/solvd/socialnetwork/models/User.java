@@ -1,5 +1,6 @@
 package com.solvd.socialnetwork.models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,13 +11,13 @@ public class User extends BaseEntity {
 	private String password;
 	private String firstName;
 	private String lastName;
-	private String birthDate;
+	private LocalDate birthDate;
 	
 	
 	private List<Post> posts = new ArrayList<Post>();
 
 	public User(Long id, String login, String email, String password, String firstName, String lastName,
-			String birthDate) {
+			LocalDate birthDate) {
 		super(id);
 		this.login = login;
 		this.email = email;
@@ -24,6 +25,11 @@ public class User extends BaseEntity {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthDate = birthDate;
+	}
+
+
+	public User() {
+		// TODO Auto-generated constructor stub
 	}
 
 
@@ -67,11 +73,11 @@ public class User extends BaseEntity {
 		this.lastName = lastName;
 	}
 
-	public String getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 

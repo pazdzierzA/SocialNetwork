@@ -2,29 +2,33 @@ package com.solvd.socialnetwork.models;
 
 public class Like extends BaseEntity{
 
-	private Long post_id;
-	private Long user_id;
+	private Long postId;
+	private Long userId;
 	
-	public Like(Long id, Long post_id, Long user_id) {
+	public Like(Long id, Long postId, Long userId) {
 		super(id);
-		this.post_id = post_id;
-		this.user_id = user_id;
+		this.postId = postId;
+		this.userId = userId;
 	}
 
-	public Long getPost_id() {
-		return post_id;
+	public Like() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setPost_id(Long post_id) {
-		this.post_id = post_id;
+	public Long getPostId() {
+		return postId;
 	}
 
-	public Long getUser_id() {
-		return user_id;
+	public void setPostId(Long postId) {
+		this.postId = postId;
 	}
 
-	public void setUser_id(Long user_id) {
-		this.user_id = user_id;
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long user_id) {
+		this.userId = user_id;
 	}
 	
 	
