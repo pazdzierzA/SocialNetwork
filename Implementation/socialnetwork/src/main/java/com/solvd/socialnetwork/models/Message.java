@@ -40,6 +40,11 @@ public class Message extends BaseEntity {
 	public void setRecipientId(Long recipientId) {
 		this.recipientId = recipientId;
 	}
+
+	@Override
+	public String toString() {
+		return "Message [text=" + text + ", senderId=" + senderId + ", recipientId=" + recipientId + "]";
+	}
 	
 
 

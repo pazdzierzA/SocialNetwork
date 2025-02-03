@@ -64,4 +64,12 @@ public class Group extends BaseEntity{
 		this.groupCreatorId = groupCreatorId;
 	}
 
+	@Override
+	public String toString() {
+		return "Group [groupName=" + groupName + ", groupType=" + groupType + ", groupCreatorId=" + groupCreatorId
+				+ ", groupMembers=" + groupMembers + "]";
+	}
+	
+	
+
 }

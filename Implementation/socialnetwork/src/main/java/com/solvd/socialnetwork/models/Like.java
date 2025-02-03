@@ -30,6 +30,11 @@ public class Like extends BaseEntity{
 	public void setUserId(Long user_id) {
 		this.userId = user_id;
 	}
+
+	@Override
+	public String toString() {
+		return "Like [postId=" + postId + ", userId=" + userId + "]";
+	}
 	
 	
 	

@@ -54,4 +54,12 @@ public class Friendship extends BaseEntity {
 		this.friendId = friendId;
 	}
 
+	@Override
+	public String toString() {
+		return "Friendship [status=" + status + ", type=" + type + ", userId=" + userId + ", friendId=" + friendId
+				+ "]";
+	}
+	
+	
+
 }

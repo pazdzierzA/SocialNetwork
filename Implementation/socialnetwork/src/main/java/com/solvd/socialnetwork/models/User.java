@@ -6,6 +6,7 @@ import java.util.List;
 
 public class User extends BaseEntity {
 
+	
 	private String login;
 	private String email;
 	private String password;
@@ -88,5 +89,12 @@ public class User extends BaseEntity {
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
+	
+	@Override
+	public String toString() {
+		return "User [login=" + login + ", email=" + email + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", birthDate=" + birthDate + ", posts=" + posts + "]";
+	}
+
 
 }

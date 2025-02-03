@@ -97,6 +97,12 @@ public class Post extends BaseEntity{
 	public void setCreatorId(Long creatorId) {
 		this.creatorId = creatorId;
 	}
+	@Override
+	public String toString() {
+		return "Post [text=" + text + ", title=" + title + ", likeQuantity=" + likeQuantity + ", commentQuantity="
+				+ commentQuantity + ", creatorId=" + creatorId + ", comments=" + comments + ", likes=" + likes + "]";
+	}
+
 	
 	
 	

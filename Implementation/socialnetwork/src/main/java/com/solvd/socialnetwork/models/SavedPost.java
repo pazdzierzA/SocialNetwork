@@ -12,7 +12,7 @@ public class SavedPost extends BaseEntity{
 	}
 
 	public SavedPost() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Long getPostId() {
@@ -30,6 +30,12 @@ public class SavedPost extends BaseEntity{
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
+
+	@Override
+	public String toString() {
+		return "SavedPost [postId=" + postId + ", userId=" + userId + "]";
+	}
+	
 	
 	
 }

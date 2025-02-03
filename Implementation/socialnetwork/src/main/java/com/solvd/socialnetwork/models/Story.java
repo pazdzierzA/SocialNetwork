@@ -2,6 +2,7 @@ package com.solvd.socialnetwork.models;
 
 public class Story extends BaseEntity {
 
+
 	private String text;
 	private String pictureStoryUrl;
 	private Long storyCreatorId;
@@ -39,6 +40,12 @@ public class Story extends BaseEntity {
 
 	public void setStoryCreatorId(Long storyCreatorId) {
 		this.storyCreatorId = storyCreatorId;
+	}
+	
+	@Override
+	public String toString() {
+		return "Story [text=" + text + ", pictureStoryUrl=" + pictureStoryUrl + ", storyCreatorId=" + storyCreatorId
+				+ "]";
 	}
 
 }

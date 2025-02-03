@@ -41,4 +41,11 @@ public class GroupMember extends BaseEntity {
 		this.userId = userId;
 	}
 
+	@Override
+	public String toString() {
+		return "GroupMember [userRole=" + userRole + ", groupId=" + groupId + ", userId=" + userId + "]";
+	}
+	
+	
+
 }

@@ -40,6 +40,12 @@ public class Notification extends BaseEntity{
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
+
+	@Override
+	public String toString() {
+		return "Notification [text=" + text + ", type=" + type + ", userId=" + userId + "]";
+	}
+	
 	
 	
 	

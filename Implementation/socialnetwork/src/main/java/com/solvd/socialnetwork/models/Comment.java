@@ -43,6 +43,12 @@ public class Comment extends BaseEntity {
 		this.postId = postId;
 	}
 
+	@Override
+	public String toString() {
+		return "Comment [text=" + text + ", authorId=" + authorId + ", postId=" + postId + "]";
+	}
+
+	
 	
 
 }

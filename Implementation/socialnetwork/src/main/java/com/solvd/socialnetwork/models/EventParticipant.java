@@ -43,4 +43,11 @@ public class EventParticipant extends BaseEntity {
 		this.userId = userId;
 	}
 
+	@Override
+	public String toString() {
+		return "EventParticipant [status=" + status + ", eventId=" + eventId + ", userId=" + userId + "]";
+	}
+	
+	
+
 }

@@ -1,7 +1,7 @@
 package com.solvd.socialnetwork.enums;
 
 public enum GroupType {
-	PUBLIC(1, "public"), PRIVATE(2, "private");
+	PUBLIC(1, "Public"), PRIVATE(2, "Private");
 
 	private final Integer id;
 	private final String type;
