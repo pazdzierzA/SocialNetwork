@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.solvd.socialnetwork.daos.ISavedPostDAO;
 import com.solvd.socialnetwork.models.SavedPost;
-import com.solvd.socialnetwork.services.ConnectionPool;
+import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
 
 public class SavedPostDAO extends AbstractMySQLDAO<SavedPost> implements ISavedPostDAO {
 	private final static Logger logger = LogManager.getLogger(SavedPostDAO.class.getName());

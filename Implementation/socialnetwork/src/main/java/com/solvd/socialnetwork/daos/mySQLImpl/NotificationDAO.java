@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 import com.solvd.socialnetwork.daos.INotificationDAO;
 import com.solvd.socialnetwork.enums.NotificationType;
 import com.solvd.socialnetwork.models.Notification;
-import com.solvd.socialnetwork.services.ConnectionPool;
+import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
 
 public class NotificationDAO extends AbstractMySQLDAO<Notification> implements INotificationDAO {
 	private final static Logger logger = LogManager.getLogger(NotificationDAO.class.getName());

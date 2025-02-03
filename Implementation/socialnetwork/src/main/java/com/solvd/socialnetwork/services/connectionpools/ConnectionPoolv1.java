@@ -1,4 +1,4 @@
-package com.solvd.socialnetwork.services;
+package com.solvd.socialnetwork.services.connectionpools;
 
 import java.sql.Connection;
 import java.sql.SQLException;

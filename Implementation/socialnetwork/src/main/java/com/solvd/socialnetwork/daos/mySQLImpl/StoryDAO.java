@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.solvd.socialnetwork.daos.IStoryDAO;
 import com.solvd.socialnetwork.models.Story;
-import com.solvd.socialnetwork.services.ConnectionPool;
+import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
 
 public class StoryDAO extends AbstractMySQLDAO<Story> implements IStoryDAO{
 	private final static Logger logger = LogManager.getLogger(StoryDAO.class.getName());

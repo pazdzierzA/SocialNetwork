@@ -14,7 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.solvd.socialnetwork.daos.IEventDAO;
 import com.solvd.socialnetwork.models.Event;
-import com.solvd.socialnetwork.services.ConnectionPool;
+import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
 
 public class EventDAO  extends AbstractMySQLDAO<Event> implements IEventDAO {
 	private final static Logger logger = LogManager.getLogger(EventDAO.class.getName());

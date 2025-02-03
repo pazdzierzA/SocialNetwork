@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 import com.solvd.socialnetwork.daos.IEventParticipantDAO;
 import com.solvd.socialnetwork.enums.ParticipantStatus;
 import com.solvd.socialnetwork.models.EventParticipant;
-import com.solvd.socialnetwork.services.ConnectionPool;
+import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
 
 public class EventParticipantDAO extends AbstractMySQLDAO<EventParticipant>implements IEventParticipantDAO {
 	private final static Logger logger = LogManager.getLogger(EventParticipantDAO.class.getName());
