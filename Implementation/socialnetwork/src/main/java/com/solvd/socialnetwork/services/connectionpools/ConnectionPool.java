@@ -13,25 +13,10 @@ public class ConnectionPool {
 	private final static Logger logger = LogManager.getLogger(ConnectionPool.class.getName());
 	private static final String JDBC_URL = "jdbc:mysql://127.0.0.1:3307/social_networks";
 	private static final String USERNAME = "root";
-	private static final String PASSWORD = "";
+	private static final String PASSWORD = "devintern";
 	private BlockingQueue<Connection> connections;
 	private static Integer size = 10;
 	private static ConnectionPool INSTANCE = null;
-
-	private ConnectionPool(Integer size) {
-		this.connections = new ArrayBlockingQueue<>(size);
-		for (int i = 0; i < size; i++) {
-			try {
-				connections.offer(createNewConnection());
-			} catch (SQLException e) {
-				throw new RuntimeException("Error initializing connection pool", e);
-			}
-		}
-	}
-
-	public Integer getSize() {
-		return size;
-	}
 
 
 	public static ConnectionPool getInstance() {
@@ -42,14 +27,10 @@ public class ConnectionPool {
 		return INSTANCE;
 	}
 
-	private Connection createNewConnection() throws SQLException {
-		return DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
-	}
-
 	public void releaseConnection(Connection connection) {
 		if (connection != null) {
 			connections.offer(connection);
-			
+
 		}
 	}
 
@@ -57,8 +38,8 @@ public class ConnectionPool {
 		try {
 			return connections.take();
 		} catch (InterruptedException e) {
-			 Thread.currentThread().interrupt();
-	         throw new RuntimeException("Connection waiting interrupted", e);
+			Thread.currentThread().interrupt();
+			throw new RuntimeException("Connection waiting interrupted", e);
 		}
 	}
 
@@ -72,6 +53,26 @@ public class ConnectionPool {
 		}
 		connections.clear();
 		logger.info("Connection pool has been shut down.");
+	}
+	
+	public Integer getSize() {
+		return size;
+	}
+
+	
+	private ConnectionPool(Integer size) {
+		this.connections = new ArrayBlockingQueue<>(size);
+		for (int i = 0; i < size; i++) {
+			try {
+				connections.offer(createNewConnection());
+			} catch (SQLException e) {
+				throw new RuntimeException("Error initializing connection pool", e);
+			}
+		}
+	}
+
+	private Connection createNewConnection() throws SQLException {
+		return DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
 	}
 
 }
