@@ -10,11 +10,11 @@ import java.util.List;
 import com.solvd.socialnetwork.models.Post;
 
 
-@XmlRootElement(name = "posts") // This matches the root element in your XML
+@XmlRootElement(name = "posts") 
 @XmlAccessorType(XmlAccessType.FIELD)
 
 public class PostWrapper {
-	 @XmlElement(name = "post") // Maps each <post> inside <posts>
+	 @XmlElement(name = "post")
     private List<Post> posts;
 
    
