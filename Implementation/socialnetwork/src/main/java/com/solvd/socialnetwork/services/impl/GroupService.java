@@ -3,11 +3,12 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IGroupDAO;
+import com.solvd.socialnetwork.daos.mySQLImpl.GroupDAO;
 import com.solvd.socialnetwork.models.Group;
 import com.solvd.socialnetwork.services.IGroupService;
 
 public class GroupService implements IGroupService {
-	private IGroupDAO groupDAO;
+	private IGroupDAO groupDAO = new GroupDAO();
 
 	@Override
 	public Group getById(Long id) {

@@ -1,11 +1,12 @@
 package com.solvd.socialnetwork.services.impl;
 
 import com.solvd.socialnetwork.daos.IStoryDAO;
+import com.solvd.socialnetwork.daos.mySQLImpl.StoryDAO;
 import com.solvd.socialnetwork.models.Story;
 import com.solvd.socialnetwork.services.IStoryService;
 
 public class StoryService implements IStoryService {
-	private IStoryDAO storyDAO;
+	private IStoryDAO storyDAO = new StoryDAO();
 	@Override
 	public Story getById(Long id) {
 		return storyDAO.getById(id);

@@ -89,6 +89,7 @@ public class UserDAO extends AbstractMySQLDAO<User> implements IUserDAO{
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
+		logger.info("Entity added");
 		return entity;
 	}
 
@@ -115,6 +116,7 @@ public class UserDAO extends AbstractMySQLDAO<User> implements IUserDAO{
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
+		logger.info("Entity upgraded");
 		return entity;
 	}
 
@@ -132,6 +134,7 @@ public class UserDAO extends AbstractMySQLDAO<User> implements IUserDAO{
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
+		logger.info("Entity deleted");
 		
 	}
 

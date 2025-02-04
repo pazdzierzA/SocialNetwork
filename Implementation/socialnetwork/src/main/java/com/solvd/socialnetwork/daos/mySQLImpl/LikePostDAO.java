@@ -9,19 +9,20 @@ import java.sql.Statement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.solvd.socialnetwork.daos.ILikeDAO;
-import com.solvd.socialnetwork.models.Like;
+import com.solvd.socialnetwork.daos.ILikePostDAO;
+import com.solvd.socialnetwork.models.LikePost;
 import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
 
-public class LikeDAO extends AbstractMySQLDAO<Like> implements ILikeDAO {
-	private final static Logger logger = LogManager.getLogger(LikeDAO.class.getName());
+public class LikePostDAO extends AbstractMySQLDAO<LikePost> implements ILikePostDAO {
+	private final static Logger logger = LogManager.getLogger(LikePostDAO.class.getName());
 	public final static String GET_BY_ID = "SELECT * FROM Likes WHERE id = ?";
+	public final static String GET_BY_POST_ID = "SELECT * FROM Likes WHERE postId = ?";
 	public final static String INSERT = "INSERT INTO Likes (post_id, user_id) VALUES (?, ?)";
 	public final static String UPDATE = "UPDATE Likes SET  post_id = ?, user_id =?  WHERE id = ?";
 	public final static String REMOVE_BY_ID = "DELETE FROM Likes WHERE id = ?";
 	@Override
-	public Like getById(Long id) {
-		Like like = new Like();
+	public LikePost getById(Long id) {
+		LikePost likePost = new LikePost();
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -29,7 +30,7 @@ public class LikeDAO extends AbstractMySQLDAO<Like> implements ILikeDAO {
 				statement.setLong(1, id);
 				try (ResultSet resultSet = statement.executeQuery()) {
 					while (resultSet.next()) {
-						like = getMappedEntity(resultSet);
+						likePost = getMappedEntity(resultSet);
 					}
 				}
 			} catch (SQLException e) {
@@ -38,11 +39,11 @@ public class LikeDAO extends AbstractMySQLDAO<Like> implements ILikeDAO {
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return like;
+		return likePost;
 	}
 
 	@Override
-	public Like save(Like entity) {
+	public LikePost save(LikePost entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -69,7 +70,7 @@ public class LikeDAO extends AbstractMySQLDAO<Like> implements ILikeDAO {
 	}
 
 	@Override
-	public Like update(Like entity) {
+	public LikePost update(LikePost entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -105,12 +106,36 @@ public class LikeDAO extends AbstractMySQLDAO<Like> implements ILikeDAO {
 	}
 	
 	@Override
-	protected Like getMappedEntity(ResultSet resultSet) throws SQLException {
+	public LikePost getByPostId(Long id) {
+		LikePost likePost = new LikePost();
+		Connection connection = null;
+		try {
+			connection = ConnectionPool.getInstance().getConnection();
+			try (PreparedStatement statement = connection.prepareStatement(GET_BY_POST_ID)) {
+				statement.setLong(1, id);
+				try (ResultSet resultSet = statement.executeQuery()) {
+					while (resultSet.next()) {
+						likePost = getMappedEntity(resultSet);
+					}
+				}
+			} catch (SQLException e) {
+				logger.error("Error retrieving like with post ID: " + id, e);
+			}
+		} finally {
+			ConnectionPool.getInstance().releaseConnection(connection);
+		}
+		return likePost;
+	}
+	
+	@Override
+	protected LikePost getMappedEntity(ResultSet resultSet) throws SQLException {
 		Long id = resultSet.getLong("id");
 		Long postId = resultSet.getLong("post_id");
 		Long userId = resultSet.getLong("user_id");
-		return new Like(id,postId,userId);
+		return new LikePost(id,postId,userId);
 	}
+
+
 
 
 

@@ -17,7 +17,7 @@ import org.xml.sax.XMLReader;
 
 import com.solvd.socialnetwork.models.Group;
 import com.solvd.socialnetwork.models.GroupMember;
-import com.solvd.socialnetwork.models.Like;
+import com.solvd.socialnetwork.models.LikePost;
 import com.solvd.socialnetwork.models.Post;
 import com.solvd.socialnetwork.models.Story;
 import com.solvd.socialnetwork.models.User;
@@ -33,14 +33,32 @@ public class App {
 		LocalDate userDate = LocalDate.of(1990, 05, 15);
 		User userJohn = new User("john_doe","john.doe@example.com","password123","John","Doe",userDate);
 		UserService userService = new UserService();
-       	userJohn = userService.save(userJohn);		
+		User updatedJohn = new User((long)8,"Adam_doe","Adam.doe@example.com","password123","Adam","Doe",userDate);
+       	userJohn = userService.save(userJohn);
+       	
+       	List<User> withNameJohn = userService.getByFirstName("John");
+       	List<User> withNameAdam = userService.getByFirstName("Adam");
+       	
+       	for (User john: withNameJohn) {
+       	logger.info("Users from db with name John: {}", john.toString());
+       	}
+       	
+       	userService.update(updatedJohn);
+       	userService.removeById((long) 6);
+       	for (User john: withNameJohn) {
+           	logger.info("Users from db with name John after changes : {}", john.toString());
+           	}
+     	for (User adam: withNameAdam) {
+           	logger.info("Users from db with name Adam after changes : {}", adam.toString());
+           	}
 
 		// SAX Parser
+    	logger.info("SAX parser value: ");
 		List<User> parsedUsers = new ArrayList<>();
 		List<Post> parsedPosts = new ArrayList<>();
 		List<Story> parsedStories = new ArrayList<>();
 		List<Group> parsedGroups = new ArrayList<>();
-		List<Like> parsedLikes = new ArrayList<>();
+		List<LikePost> parsedLikes = new ArrayList<>();
 		List<Comment> parsedComments = new ArrayList<>();
 		List<GroupMember> parsedGroupMembers = new ArrayList<>();
 
@@ -76,8 +94,8 @@ public class App {
 				logger.info(group.toString());
 			}
 
-			for (Like like : parsedLikes) {
-				logger.info(like.toString());
+			for (LikePost likePost : parsedLikes) {
+				logger.info(likePost.toString());
 			}
 			for (Comment comment : parsedComments) {
 				logger.info(comment.toString());

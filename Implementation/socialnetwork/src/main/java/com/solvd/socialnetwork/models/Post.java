@@ -11,7 +11,7 @@ public class Post extends BaseEntity{
 	private Long creatorId;
 	
 	private List<Comment> comments = new ArrayList<Comment>();
-	private List<Like> likes = new ArrayList<Like>();
+	private List<LikePost> likePosts = new ArrayList<LikePost>();
 
 	public Post() {
 		
@@ -31,7 +31,7 @@ public class Post extends BaseEntity{
 	}
 	
 	public Post(Long id, String text, String title, Integer likeQuantity, Integer commentQuantity,Long creatorId,
-			List<Comment> comments, List<Like>likes) {
+			List<Comment> comments, List<LikePost>likePosts) {
 		super(id);
 		this.text = text;
 		this.title = title;
@@ -39,7 +39,7 @@ public class Post extends BaseEntity{
 		this.commentQuantity = commentQuantity;
 		this.creatorId =creatorId;
 		this.comments = comments;
-		this.likes = likes;
+		this.likePosts = likePosts;
 	}
 	
 	public String getText() {
@@ -82,12 +82,12 @@ public class Post extends BaseEntity{
 		this.comments = comments;
 	}
 
-	public List<Like> getLikes() {
-		return likes;
+	public List<LikePost> getLikes() {
+		return likePosts;
 	}
 
-	public void setLikes(List<Like> likes) {
-		this.likes = likes;
+	public void setLikes(List<LikePost> likePosts) {
+		this.likePosts = likePosts;
 	}
 
 	public Long getCreatorId() {
@@ -100,7 +100,7 @@ public class Post extends BaseEntity{
 	@Override
 	public String toString() {
 		return "Post [text=" + text + ", title=" + title + ", likeQuantity=" + likeQuantity + ", commentQuantity="
-				+ commentQuantity + ", creatorId=" + creatorId + ", comments=" + comments + ", likes=" + likes + "]";
+				+ commentQuantity + ", creatorId=" + creatorId + ", comments=" + comments + ", likes=" + likePosts + "]";
 	}
 
 	

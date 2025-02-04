@@ -3,11 +3,12 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IEventDAO;
+import com.solvd.socialnetwork.daos.mySQLImpl.EventDAO;
 import com.solvd.socialnetwork.models.Event;
 import com.solvd.socialnetwork.services.IEventService;
 
 public class EventService implements IEventService {
-	private IEventDAO eventDAO;
+	private IEventDAO eventDAO = new EventDAO();
 
 	@Override
 	public Event getById(Long id) {

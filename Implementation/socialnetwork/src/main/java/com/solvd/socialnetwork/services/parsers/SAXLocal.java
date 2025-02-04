@@ -13,7 +13,7 @@ import com.solvd.socialnetwork.enums.UserRole;
 import com.solvd.socialnetwork.models.Comment;
 import com.solvd.socialnetwork.models.Group;
 import com.solvd.socialnetwork.models.GroupMember;
-import com.solvd.socialnetwork.models.Like;
+import com.solvd.socialnetwork.models.LikePost;
 import com.solvd.socialnetwork.models.Post;
 import com.solvd.socialnetwork.models.Story;
 import com.solvd.socialnetwork.models.User;
@@ -22,7 +22,7 @@ public class SAXLocal extends DefaultHandler {
 	private User user;
 	private Group group;
 	private Comment comment;
-	private Like like;
+	private LikePost likePost;
 	private Story story;
 	private Post post;
 	private GroupMember groupMember;
@@ -31,7 +31,7 @@ public class SAXLocal extends DefaultHandler {
 	private List<Post> posts;
 	private List<Group> groups;
 	private List<Comment> comments;
-	private List<Like> likes;
+	private List<LikePost> likePosts;
 	private List<Story> stories;
 	private List<GroupMember> groupMembers;
 
@@ -43,7 +43,7 @@ public class SAXLocal extends DefaultHandler {
 		groupMembers = new ArrayList<>();
 		stories = new ArrayList<>();
 		comments = new ArrayList<>();
-		likes = new ArrayList<>();
+		likePosts = new ArrayList<>();
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class SAXLocal extends DefaultHandler {
 			break;
 
 		case "like":
-			like = new Like();
+			likePost = new LikePost();
 			break;
 		}
 
@@ -115,8 +115,8 @@ public class SAXLocal extends DefaultHandler {
 			break;
 
 		case "like":
-			likes.add(like);
-			like = null;
+			likePosts.add(likePost);
+			likePost = null;
 			break;
 		}
 
@@ -241,16 +241,16 @@ public class SAXLocal extends DefaultHandler {
 			}
 
 		}
-		if (like != null) {
+		if (likePost != null) {
 			switch (currentElement) {
 			case "id":
-				like.setId(Long.parseLong(content));
+				likePost.setId(Long.parseLong(content));
 				break;
 			case "postId":
-				like.setPostId(Long.parseLong(content));
+				likePost.setPostId(Long.parseLong(content));
 				break;
 			case "userId":
-				like.setUserId(Long.parseLong(content));
+				likePost.setUserId(Long.parseLong(content));
 				break;
 			}
 		}
@@ -277,8 +277,8 @@ public class SAXLocal extends DefaultHandler {
 		return stories;
 	}
 
-	public List<Like> getLikes() {
-		return likes;
+	public List<LikePost> getLikes() {
+		return likePosts;
 	}
 
 	public List<GroupMember> getGroupMembers() {

@@ -3,13 +3,14 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IGroupMemberDAO;
+import com.solvd.socialnetwork.daos.mySQLImpl.GroupMemberDAO;
 import com.solvd.socialnetwork.enums.UserRole;
 import com.solvd.socialnetwork.models.GroupMember;
 import com.solvd.socialnetwork.models.User;
 import com.solvd.socialnetwork.services.IGroupMemberService;
 
 public class GroupMemberService implements IGroupMemberService {
-	private IGroupMemberDAO groupMemberDAO;
+	private IGroupMemberDAO groupMemberDAO = new GroupMemberDAO();
 	@Override
 	public GroupMember getById(Long id) {
 
