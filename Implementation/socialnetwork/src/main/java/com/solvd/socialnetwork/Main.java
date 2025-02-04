@@ -31,8 +31,8 @@ import jakarta.xml.bind.Unmarshaller;
 
 import com.solvd.socialnetwork.models.Comment;
 
-public class App {
-	private final static Logger logger = LogManager.getLogger(App.class.getName());
+public class Main {
+	private final static Logger logger = LogManager.getLogger(Main.class.getName());
 
 	public static void main(String[] args) {
 
