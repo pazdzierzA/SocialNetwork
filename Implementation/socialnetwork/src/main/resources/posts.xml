@@ -1,0 +1,20 @@
+
+<posts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<post>
+			<id>1</id>
+			<text>This is my first post!</text>
+			<title>Introduction</title>
+			<likeQuantity>20</likeQuantity>
+			<commentQuantity>5</commentQuantity>
+			<creatorId>1</creatorId>
+		</post>
+		<post>
+			<id>2</id>
+			<text>What a beautiful day!</text>
+			<title>Weather</title>
+			<likeQuantity>50</likeQuantity>
+			<commentQuantity>10</commentQuantity>
+			<creatorId>2</creatorId>
+		</post>
+</posts>
+	

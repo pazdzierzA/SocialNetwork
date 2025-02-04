@@ -23,6 +23,12 @@ import com.solvd.socialnetwork.models.Story;
 import com.solvd.socialnetwork.models.User;
 import com.solvd.socialnetwork.services.impl.UserService;
 import com.solvd.socialnetwork.services.parsers.SAXLocal;
+
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
+
 import com.solvd.socialnetwork.models.Comment;
 
 public class App {
@@ -111,6 +117,32 @@ public class App {
 		} catch (IOException e) {
 			 logger.error("Error while parsing XML: {}", e.getMessage(), e);
 		}
+		
+		
+		// JAXB 
+		logger.info("JAXB parser value: ");
+		PostWrapper result = null;
+		
+        try {
+        	InputSource inputFilePost = new InputSource("src/main/resources/posts.xml");
+        	JAXBContext context = JAXBContext.newInstance(PostWrapper.class);
+			Marshaller marshaller = context.createMarshaller();
+			Unmarshaller unmarshaller = context.createUnmarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+			result = (PostWrapper) unmarshaller.unmarshal( inputFilePost);
+			for (Post post : result.getPosts()) {
+				logger.info("Title: {}", post.getTitle());
+                logger.info("Text: {}", post.getText());
+                logger.info("Likes: {}", post.getLikeQuantity());
+                logger.info("Comments: {}", post.getCommentQuantity());
+                logger.info("--------------------------------");
+            }
+			
+		} catch (JAXBException e) {
+			
+			logger.error(e);
+		}
+        
 
 	}
 }

@@ -1,13 +1,28 @@
 package com.solvd.socialnetwork.models;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+
+@XmlRootElement(name = "post")
+@XmlAccessorType(XmlAccessType.FIELD)
+
 public class Post extends BaseEntity{
+	@XmlElement(name = "text")
 	private String text;
+	@XmlElement(name = "title")
 	private String title;
+	@XmlElement(name = "likeQuantity")
 	private Integer likeQuantity;
+	@XmlElement(name = "commentQuantity")
 	private Integer commentQuantity;
+	@XmlElement(name = "creatorId")
 	private Long creatorId;
 	
 	private List<Comment> comments = new ArrayList<Comment>();
