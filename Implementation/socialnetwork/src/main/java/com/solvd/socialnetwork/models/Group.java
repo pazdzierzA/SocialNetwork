@@ -67,7 +67,7 @@ public class Group extends BaseEntity{
 	@Override
 	public String toString() {
 		return "Group [groupName=" + groupName + ", groupType=" + groupType + ", groupCreatorId=" + groupCreatorId
-				+ ", groupMembers=" + groupMembers + "]";
+				+  "]";
 	}
 	
 	

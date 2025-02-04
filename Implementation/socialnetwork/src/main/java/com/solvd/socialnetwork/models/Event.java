@@ -24,6 +24,7 @@ public class Event extends BaseEntity {
 		this.participants = participants;
 	}
 
+	
 	public Event() {
 
 	}
@@ -88,7 +89,7 @@ public class Event extends BaseEntity {
 	@Override
 	public String toString() {
 		return "Event [name=" + name + ", location=" + location + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", creatorId=" + creatorId + ", participants=" + participants + "]";
+				+ ", creatorId=" + creatorId + "]";
 	}
 	
 	

@@ -115,7 +115,7 @@ public class Post extends BaseEntity{
 	@Override
 	public String toString() {
 		return "Post [text=" + text + ", title=" + title + ", likeQuantity=" + likeQuantity + ", commentQuantity="
-				+ commentQuantity + ", creatorId=" + creatorId + ", comments=" + comments + ", likes=" + likePosts + "]";
+				+ commentQuantity + ", creatorId=" + creatorId +  "]";
 	}
 
 	
