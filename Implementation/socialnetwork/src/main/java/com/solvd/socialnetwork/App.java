@@ -1,6 +1,7 @@
 package com.solvd.socialnetwork;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import com.solvd.socialnetwork.models.Like;
 import com.solvd.socialnetwork.models.Post;
 import com.solvd.socialnetwork.models.Story;
 import com.solvd.socialnetwork.models.User;
+import com.solvd.socialnetwork.services.impl.UserService;
 import com.solvd.socialnetwork.services.parsers.SAXLocal;
 import com.solvd.socialnetwork.models.Comment;
 
@@ -27,6 +29,11 @@ public class App {
 	private final static Logger logger = LogManager.getLogger(App.class.getName());
 
 	public static void main(String[] args) {
+
+		LocalDate userDate = LocalDate.of(1990, 05, 15);
+		User userJohn = new User("john_doe","john.doe@example.com","password123","John","Doe",userDate);
+		UserService userService = new UserService();
+       	userJohn = userService.save(userJohn);		
 
 		// SAX Parser
 		List<User> parsedUsers = new ArrayList<>();

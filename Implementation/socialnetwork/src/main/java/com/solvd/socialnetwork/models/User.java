@@ -28,7 +28,15 @@ public class User extends BaseEntity {
 		this.birthDate = birthDate;
 	}
 
-
+	public User(String login, String email, String password, String firstName, String lastName,
+			LocalDate birthDate) {
+		this.login = login;
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthDate = birthDate;
+	}
 	public User() {
 		// TODO Auto-generated constructor stub
 	}

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <social_networks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="social_networks_schema.xsd">
-
+	
+<name>"MySocialNetwork"</name>
 	<!-- User 1 -->
 	<users>
 		<user>
 			<id>1</id>
 			<login>john_doe</login>
 			<email>john.doe@example.com</email>
+			<password>password123</password>
 			<firstName>John</firstName>
 			<lastName>Doe</lastName>
 			<birthDate>1990-05-15</birthDate>
@@ -16,6 +18,7 @@
 			<id>2</id>
 			<login>jane_smith</login>
 			<email>jane.smith@example.com</email>
+			<password>password12123</password>
 			<firstName>Jane</firstName>
 			<lastName>Smith</lastName>
 			<birthDate>1985-07-22</birthDate>

@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 public class ConnectionPool {
 	private final static Logger logger = LogManager.getLogger(ConnectionPool.class.getName());
-	private static final String JDBC_URL = "jdbc:mysql://127.0.0.1:3307/social_networks";
+	private static final String JDBC_URL = "jdbc:mysql://34.205.43.78:3306/social_networks";
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "devintern";
 	private BlockingQueue<Connection> connections;

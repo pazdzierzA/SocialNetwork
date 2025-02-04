@@ -72,6 +72,7 @@ public class UserDAO extends AbstractMySQLDAO<User> implements IUserDAO{
 				statement.setString(3,entity.getPassword());
 				statement.setString(4, entity.getFirstName());
 				statement.setString(5, entity.getLastName());
+				statement.setDate(6, Date.valueOf(entity.getBirthDate()));
 				int affectedRows = statement.executeUpdate();
 				if (affectedRows > 0) {
 					try (ResultSet resultSet = statement.getGeneratedKeys()) {

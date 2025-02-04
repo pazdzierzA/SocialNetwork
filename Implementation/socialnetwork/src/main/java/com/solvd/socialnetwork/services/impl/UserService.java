@@ -4,11 +4,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IUserDAO;
+import com.solvd.socialnetwork.daos.mySQLImpl.UserDAO;
 import com.solvd.socialnetwork.models.User;
 import com.solvd.socialnetwork.services.IUserService;
 
 public class UserService implements IUserService {
-	private IUserDAO userDAO;
+	private IUserDAO userDAO =new UserDAO();
 	@Override
 	public User getById(Long id) {
 		return userDAO.getById(id);
