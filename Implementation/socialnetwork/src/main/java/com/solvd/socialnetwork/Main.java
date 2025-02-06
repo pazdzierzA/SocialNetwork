@@ -154,9 +154,6 @@ public class Main {
         	objectMapper.registerModule(new JavaTimeModule());
 			SocialNetwork socialNetworkData = objectMapper.readValue(new File("src/main/resources/social_network.json"), SocialNetwork.class);
 			objectMapper.writeValue(new File("src/main/resources/output.json"), socialNetworkData);
-			 for (User user : socialNetworkData.getUsers()) {
-	                System.out.println("User: " + user.getLogin() + " | Email: " + user.getEmail());
-	            }
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
