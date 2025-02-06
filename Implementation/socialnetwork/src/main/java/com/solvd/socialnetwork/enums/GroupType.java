@@ -1,7 +1,12 @@
 package com.solvd.socialnetwork.enums;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum GroupType {
-	PUBLIC(1, "Public"), PRIVATE(2, "Private");
+	@JsonProperty("Public")
+	PUBLIC(1, "Public"), 
+	@JsonProperty("Private")
+	PRIVATE(2, "Private");
 
 	private final Integer id;
 	private final String type;

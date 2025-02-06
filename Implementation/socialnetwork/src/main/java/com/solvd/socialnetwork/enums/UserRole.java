@@ -1,7 +1,12 @@
 package com.solvd.socialnetwork.enums;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum UserRole {
-	ADMIN(1, "admin"), MEMBER(2, "member");
+	@JsonProperty("Admin")
+	ADMIN(1, "admin"),
+	@JsonProperty("Member")
+	MEMBER(2, "member");
 
 	private final Integer id;
 	private final String role;

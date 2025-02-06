@@ -1,5 +1,6 @@
 package com.solvd.socialnetwork;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.solvd.socialnetwork.models.Comment;
 
 public class Main {
@@ -142,6 +145,22 @@ public class Main {
 			
 			logger.error(e);
 		}
+        
+        
+        //JACKSON
+        
+        try {
+        	ObjectMapper objectMapper = new ObjectMapper();
+        	objectMapper.registerModule(new JavaTimeModule());
+			SocialNetwork socialNetworkData = objectMapper.readValue(new File("src/main/resources/social_network.json"), SocialNetwork.class);
+			objectMapper.writeValue(new File("src/main/resources/output.json"), socialNetworkData);
+			 for (User user : socialNetworkData.getUsers()) {
+	                System.out.println("User: " + user.getLogin() + " | Email: " + user.getEmail());
+	            }
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        
         
 
 	}
