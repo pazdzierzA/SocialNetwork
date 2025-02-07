@@ -153,7 +153,29 @@ public class Main {
         	ObjectMapper objectMapper = new ObjectMapper();
         	objectMapper.registerModule(new JavaTimeModule());
 			SocialNetwork socialNetworkData = objectMapper.readValue(new File("src/main/resources/social_network.json"), SocialNetwork.class);
-			objectMapper.writeValue(new File("src/main/resources/output.json"), socialNetworkData);
+			objectMapper.writeValue(new File("src/main/resources/social_networks.json"), socialNetworkData);
+			
+			
+			Post post = new Post((long)1,"This is my first post!","Introduction",20, 5,(long)1 );
+			Post secondPost = new Post((long)2,"This is my second post!","Second day",10, 6,(long)2 );
+			Comment firstComment = new Comment((long) 1,"Fantastic",(long)1,(long)2);
+			Comment secondComment = new Comment((long) 2,"Bad",(long)2,(long)2);
+			LikePost like = new LikePost((long)1, (long)2,(long)1);
+			LikePost secondLike = new LikePost((long)2, (long)2,(long)2);
+			List<Comment> comments = new ArrayList<>();
+			comments.add(firstComment);
+			comments.add(secondComment);
+			List<LikePost> likes = new ArrayList<>();
+			likes.add(like);
+			likes.add(secondLike);
+			List <Post> allPosts = new ArrayList<>();
+			allPosts.add(post);
+			allPosts.add(secondPost);
+			secondPost.setComments(comments);
+			secondPost.setLikes(likes);
+			
+			//ObjectMapper objectMapper1 = new ObjectMapper();
+			objectMapper.writeValue(new File("src/main/resources/posts.json"), allPosts);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -3,13 +3,14 @@ package com.solvd.socialnetwork.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.solvd.socialnetwork.enums.GroupType;
 
 public class Group extends BaseEntity{
 	private String groupName;
 	private GroupType groupType;
 	private Long groupCreatorId;
-	
+	@JsonIgnore
 	private List<GroupMember> groupMembers = new ArrayList<GroupMember>();
 
 	

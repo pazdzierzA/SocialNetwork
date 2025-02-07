@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class User extends BaseEntity {
 
 	
@@ -14,7 +16,7 @@ public class User extends BaseEntity {
 	private String lastName;
 	private LocalDate birthDate;
 	
-	
+	@JsonIgnore
 	private List<Post> posts = new ArrayList<Post>();
 
 	public User(Long id, String login, String email, String password, String firstName, String lastName,

@@ -1,0 +1,122 @@
+{
+	"users": [
+		{
+			"id": 1,
+			"login": "john_doe",
+			"email": "john.doe@example.com",
+			"password": "password123",
+			"firstName": "John",
+			"lastName": "Doe",
+			"birthDate": [
+				1990,
+				5,
+				15
+			],
+			"posts": []
+		},
+		{
+			"id": 2,
+			"login": "adam_doe",
+			"email": "adam.doe@example.com",
+			"password": "password321",
+			"firstName": "Adam",
+			"lastName": "Doe",
+			"birthDate": [
+				1998,
+				6,
+				17
+			],
+			"posts": []
+		}
+	],
+	"posts": [
+		{
+			"id": 1,
+			"text": "This is my first post!",
+			"title": "Introduction",
+			"likeQuantity": 5,
+			"commentQuantity": 10,
+			"creatorId": 1,
+			"comments": [],
+			"likes": []
+		},
+		{
+			"id": 2,
+			"text": "This is my first post!",
+			"title": "Introduction",
+			"likeQuantity": 5,
+			"commentQuantity": 10,
+			"creatorId": 1,
+			"comments": [],
+			"likes": []
+		}
+	],
+	"comments": [
+		{
+			"id": 1,
+			"text": "Great post, I totally agree with you!",
+			"authorId": 2,
+			"postId": 1
+		},
+		{
+			"id": 2,
+			"text": "Yes, it's an amazing day!",
+			"authorId": 1,
+			"postId": 2
+		}
+	],
+	"groups": [
+		{
+			"id": 1,
+			"groupName": "Tech Enthusiasts",
+			"groupType": "Public",
+			"groupCreatorId": 1
+		},
+		{
+			"id": 2,
+			"groupName": "Music Lovers",
+			"groupType": "Private",
+			"groupCreatorId": 2
+		}
+	],
+	"groupMembers": [
+		{
+			"id": 1,
+			"userRole": "Admin",
+			"groupId": 2,
+			"userId": 1
+		},
+		{
+			"id": 2,
+			"userRole": "Member",
+			"groupId": 1,
+			"userId": 2
+		}
+	],
+	"likes": [
+		{
+			"id": 1,
+			"postId": 1,
+			"userId": 2
+		},
+		{
+			"id": 2,
+			"postId": 2,
+			"userId": 1
+		}
+	],
+	"stories": [
+		{
+			"id": 1,
+			"text": "Running Time!",
+			"pictureStoryUrl": "https://example.com/images/story1.jpg",
+			"storyCreatorId": 1
+		},
+		{
+			"id": 2,
+			"text": "Time to play!",
+			"pictureStoryUrl": "https://example.com/images/story2.jpg",
+			"storyCreatorId": 2
+		}
+	]
+}

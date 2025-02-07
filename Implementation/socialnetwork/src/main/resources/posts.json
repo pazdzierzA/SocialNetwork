@@ -1,0 +1,46 @@
+[
+	{
+		"id": 1,
+		"text": "This is my first post!",
+		"title": "Introduction",
+		"likeQuantity": 20,
+		"commentQuantity": 5,
+		"creatorId": 1,
+		"comments": [],
+		"likes": []
+	},
+	{
+		"id": 2,
+		"text": "This is my second post!",
+		"title": "Second day",
+		"likeQuantity": 10,
+		"commentQuantity": 6,
+		"creatorId": 2,
+		"comments": [
+			{
+				"id": 1,
+				"text": "Fantastic",
+				"authorId": 1,
+				"postId": 2
+			},
+			{
+				"id": 2,
+				"text": "Bad",
+				"authorId": 2,
+				"postId": 2
+			}
+		],
+		"likes": [
+			{
+				"id": 1,
+				"postId": 2,
+				"userId": 1
+			},
+			{
+				"id": 2,
+				"postId": 2,
+				"userId": 2
+			}
+		]
+	}
+]
