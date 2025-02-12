@@ -112,7 +112,7 @@ public class PostDAO extends AbstractMySQLDAO<Post> implements IPostDAO{
 		
 	}
 	@Override
-	public void incrementLikeCount(Long id) {
+	public void incrementLikeQuantity(Long id) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();

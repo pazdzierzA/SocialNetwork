@@ -1,0 +1,54 @@
+<mapper namespace="com.solvd.socialnetwork.daos.IUserDAO">
+    <resultMap id="UserResultMap" type="com.solvd.socialnetwork.models.User" autoMapping="false">
+        <id column="ID" property="id"/>
+        <result column="LOGIN" property="login"/>
+        <result column="EMAIL" property="email"/>
+        <result column="PASSWORD" property="password"/>
+        <result column="FIRST_NAME" property="firstName"/>
+        <result column="LAST_NAME" property="lastName"/>
+        <result column="BIRTH_DATE" property="birthDate"/>
+        <collection property="posts" ofType="com.solvd.socialnetwork.models.Post" column="ID" select="com.solvd.socialnetwork.resources.PostMapper.getPostsByUserId"/>
+    </resultMap>
+
+    <select id="getById" resultMap="UserResultMap">
+        SELECT * FROM USERS WHERE ID = #{id}
+    </select>
+
+    <select id="getByLogin" resultMap="UserResultMap">
+        SELECT * FROM USERS WHERE LOGIN = #{login}
+    </select>
+
+    <select id="getByEmail" resultMap="UserResultMap">
+        SELECT * FROM USERS WHERE EMAIL = #{email}
+    </select>
+
+    <select id="getByFirstName" resultMap="UserResultMap">
+        SELECT * FROM USERS WHERE FIRST_NAME = #{firstName}
+    </select>
+
+    <select id="getByLastName" resultMap="UserResultMap">
+        SELECT * FROM USERS WHERE LAST_NAME = #{lastName}
+    </select>
+
+    <select id="getByBirthDate" resultMap="UserResultMap">
+        SELECT * FROM USERS WHERE BIRTH_DATE = #{birthDate}
+    </select>
+
+    <insert id="save" parameterType="com.solvd.socialnetwork.models.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO USERS (LOGIN, EMAIL, PASSWORD, FIRST_NAME, LAST_NAME, BIRTH_DATE)
+        VALUES (#{login}, #{email}, #{password}, #{firstName}, #{lastName}, #{birthDate})
+    </insert>
+
+    <update id="update" parameterType="com.solvd.socialnetwork.models.User">
+        UPDATE USERS SET LOGIN = #{login}, EMAIL = #{email}, PASSWORD = #{password}, FIRST_NAME = #{firstName}, LAST_NAME = #{lastName}, BIRTH_DATE = #{birthDate}
+        WHERE ID = #{id}
+    </update>
+
+    <delete id="delete" parameterType="com.solvd.socialnetwork.models.User">
+        DELETE FROM USERS WHERE ID = #{id}
+    </delete>
+</mapper>
+
+
+
+

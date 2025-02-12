@@ -1,0 +1,34 @@
+<mapper namespace="com.solvd.socialnetwork.daos.IEventDAO"/>
+<resultMap id="EventResultMap" type="com.solvd.socialnetwork.models.Event" autoMapping="false">
+    <id column="ID" property="id"/>
+    <result column="NAME" property="name"/>
+    <result column="LOCATION" property="location"/>
+    <result column="START_DATE" property="startDate"/>
+    <result column="END_DATE" property="endDate"/>
+    <result column="CREATOR_ID" property="creatorId"/>
+    <collection property="participants" ofType="com.solvd.socialnetwork.models.EventParticipant" column="ID" select="com.solvd.socialnetwork.resources.EventParticipantMapper.getParticipantsByEventId"/>
+</resultMap>
+<select id="getById" resultMap="EventResultMap">
+    SELECT * FROM EVENTS WHERE ID = #{id}
+</select>
+<select id="getByName" resultMap="EventResultMap">
+    SELECT * FROM EVENTS WHERE NAME = #{name}
+</select>
+<select id="getByLocation" resultMap="EventResultMap">
+    SELECT * FROM EVENTS WHERE LOCATION = #{location}
+</select>
+<select id="getByCreatorId" resultMap="EventResultMap">
+    SELECT * FROM EVENTS WHERE CREATOR_ID = #{creatorId}
+</select>
+<update id="update" parameterType="com.solvd.socialnetwork.models.Event">
+    UPDATE EVENTS SET NAME = #{name}, LOCATION = #{location}, START_DATE = #{startDate}, END_DATE = #{endDate}, CREATOR_ID = #{creatorId}
+    WHERE ID = #{id}
+</update>
+<delete id="delete" parameterType="int">
+    DELETE FROM EVENTS WHERE ID = #{id}
+</delete>
+<insert id="save" parameterType="com.solvd.socialnetwork.models.Event" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO EVENTS (NAME, LOCATION, START_DATE, END_DATE, CREATOR_ID)
+    VALUES (#{name}, #{location}, #{startDate}, #{endDate}, #{creatorId})
+</insert>
+</mapper>

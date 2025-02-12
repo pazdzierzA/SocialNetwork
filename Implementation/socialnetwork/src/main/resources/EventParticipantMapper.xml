@@ -1,0 +1,30 @@
+<mapper namespace="com.solvd.socialnetwork.daos.IEventParticipantDAO">
+    <resultMap id="EventParticipantResultMap" type="com.solvd.socialnetwork.models.EventParticipant" autoMapping="false">
+        <id column="ID" property="id"/>
+        <result column="EVENT_ID" property="eventId"/>
+        <result column="USER_ID" property="userId"/>
+    </resultMap>
+
+    <select id="getById" resultMap="EventParticipantResultMap">
+        SELECT * FROM EVENT_PARTICIPANTS WHERE ID = #{id}
+    </select>
+
+    <select id="getByEventId" resultMap="EventParticipantResultMap">
+        SELECT * FROM EVENT_PARTICIPANTS WHERE EVENT_ID = #{eventId}
+    </select>
+
+    <update id="update" parameterType="com.solvd.socialnetwork.models.EventParticipant">
+        UPDATE EVENT_PARTICIPANTS 
+        SET EVENT_ID = #{eventId}, USER_ID = #{userId}
+        WHERE ID = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM EVENT_PARTICIPANTS WHERE ID = #{id}
+    </delete>
+
+    <insert id="save" parameterType="com.solvd.socialnetwork.models.EventParticipant" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO EVENT_PARTICIPANTS (EVENT_ID, USER_ID)
+        VALUES (#{eventId}, #{userId})
+    </insert>
+</mapper>

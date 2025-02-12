@@ -1,0 +1,36 @@
+<mapper namespace="com.solvd.socialnetwork.daos.IFriendshipDAO">
+    <resultMap id="FriendshipResultMap" type="com.solvd.socialnetwork.models.Friendship" autoMapping="false">
+        <id column="ID" property="id"/>
+        <result column="FRIENDSHIP_STATUS" property="friendshipStatus"/>
+        <result column="FRIENDSHIP_TYPE" property="friendshipType"/>
+        <result column="USER_ID" property="userId"/>
+        <result column="FRIEND_ID" property="friendId"/>
+    </resultMap>
+
+    <select id="getById" resultMap="FriendshipResultMap">
+        SELECT * FROM FRIENDSHIPS WHERE ID = #{id}
+    </select>
+
+    <select id="getByStatus" resultMap="FriendshipResultMap">
+        SELECT * FROM FRIENDSHIPS WHERE FRIENDSHIP_STATUS = #{friendshipStatus}
+    </select>
+
+    <select id="getByType" resultMap="FriendshipResultMap">
+        SELECT * FROM FRIENDSHIPS WHERE FRIENDSHIP_TYPE = #{friendshipType}
+    </select>
+
+    <insert id="save" parameterType="com.solvd.socialnetwork.models.Friendship" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO FRIENDSHIPS (FRIENDSHIP_STATUS, FRIENDSHIP_TYPE, USER_ID, FRIEND_ID)
+        VALUES (#{friendshipStatus}, #{friendshipType}, #{userId}, #{friendId})
+    </insert>
+
+    <update id="update" parameterType="com.solvd.socialnetwork.models.Friendship">
+        UPDATE FRIENDSHIPS 
+        SET FRIENDSHIP_STATUS = #{friendshipStatus}, FRIENDSHIP_TYPE = #{friendshipType}, USER_ID = #{userId}, FRIEND_ID = #{friendId}
+        WHERE ID = #{id}
+    </update>
+
+    <delete id="delete" parameterType="com.solvd.socialnetwork.models.Friendship">
+        DELETE FROM FRIENDSHIPS WHERE ID = #{id}
+    </delete>
+</mapper>

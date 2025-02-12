@@ -30,8 +30,8 @@ public class PostService implements IPostService {
 	}
 
 	@Override
-	public void incrementLikeCount(Long id) {
-		postDAO.incrementLikeCount(id);
+	public void incrementLikeQuantity(Long id) {
+		postDAO.incrementLikeQuantity(id);
 
 	}
 

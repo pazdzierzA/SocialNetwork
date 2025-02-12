@@ -40,7 +40,6 @@ public class User extends BaseEntity {
 		this.birthDate = birthDate;
 	}
 	public User() {
-		// TODO Auto-generated constructor stub
 	}
 
 

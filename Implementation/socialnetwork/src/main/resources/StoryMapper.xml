@@ -1,0 +1,31 @@
+<mapper namespace="com.solvd.socialnetwork.dao.IStoryDAO">
+    <resultMap id="StoryResultMap" type="com.solvd.socialnetwork.models.Story" autoMapping="false">
+        <id column="ID" property="id"/>
+        <result column="TEXT" property="text"/>
+        <result column="PICTURE_STORY_URL" property="pictureStoryUrl"/>
+        <result column="STORY_CREATOR_ID" property="storyCreatorId"/>
+    </resultMap>
+
+    <select id="getById" resultMap="StoryResultMap">
+        SELECT * FROM STORIES WHERE ID = #{id}
+    </select>
+
+    <insert id="save" parameterType="com.solvd.socialnetwork.models.Story" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO STORIES (TEXT, PICTURE_STORY_URL, STORY_CREATOR_ID)
+        VALUES (#{text}, #{pictureStoryUrl}, #{storyCreatorId})
+    </insert>
+
+    <update id="update" parameterType="com.solvd.socialnetwork.models.Story">
+        UPDATE STORIES 
+        SET TEXT = #{text}, PICTURE_STORY_URL = #{pictureStoryUrl}, STORY_CREATOR_ID = #{storyCreatorId}
+        WHERE ID = #{id}    
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM STORIES WHERE ID = #{id}
+    </delete>
+
+    <delete id="deleteByStoryCreatorId" parameterType="int">
+        DELETE FROM STORIES WHERE STORY_CREATOR_ID = #{storyCreatorId}  
+    </delete>
+</mapper>

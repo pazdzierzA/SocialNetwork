@@ -21,7 +21,7 @@ public class MessageDAO extends AbstractMySQLDAO<Message> implements IMessageDAO
 	public final static String INSERT = "INSERT INTO Messages (text, to_user_id, from_user_id ) VALUES (?, ?, ?)";
 	public final static String UPDATE = "UPDATE Messages SET text =?, to_user_id = ?,  from_user_id= ?  WHERE id = ?";
 	public final static String REMOVE_BY_ID = "DELETE FROM Messages WHERE id = ?";
-	public final static String GET_BY_TO_USER_ID = "SELECT * FROM Messages WHERE to_user_id= ?";
+	public final static String GET_BY_TO_USER_ID = "SELECT * FROM Messages WHERE from_user_id= ? OR to_user_id = ?";
 
 	@Override
 	public Message getById(Long id) {
@@ -121,6 +121,7 @@ public class MessageDAO extends AbstractMySQLDAO<Message> implements IMessageDAO
 			connection = ConnectionPool.getInstance().getConnection();
 			try (PreparedStatement statement = connection.prepareStatement(GET_BY_ID)) {
 				statement.setLong(1,id);
+				statement.setLong(2, id);
 				try (ResultSet resultSet = statement.executeQuery()) {
 					while (resultSet.next()) {
 						messages.add(getMappedEntity(resultSet));

@@ -1,0 +1,29 @@
+<configuration>
+    <properties resource="_database.properties"/>
+    <environments default="Stag">
+        <environment id="Stag">
+            <datasource type="POOLED">
+                <property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
+            </datasource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/socialnetwork/mapper/UserMapper.xml"/>
+        <mapper resource="com/socialnetwork/mapper/PostMapper.xml"/>
+        <mapper resource="com/socialnetwork/mapper/CommentMapper.xml"/>
+        <mapper resource="com/socialnetwork/mapper/MessageMapper.xml"/>
+        <mapper resource="com/socialnetwork/mapper/NotificationMapper.xml"/>
+        <mapper resource="com/socialnetwork/mapper/RelationshipMapper.xml"/>
+        <mapper resource="com/socialnetwork/mapper/GroupMapper.xml"/>
+        <mapper resource="com/socialnetwork/mapper/GroupMemberMapper.xml"/>
+        <mapper resource="com/socialnetwork/mapper/EventMappper.xml"/>
+        <mapper resource="com/socialnetwork/mapper/EventParticipantMapper.xml"/>
+        <mapper resource="com/socialnetwork/mapper/Friendship.xml"/>
+        <mapper resource="com/socialnetwork/mapper/LikePostMapper.xml"/>
+        <mapper resource="com/socialnetwork/mapper/StoryMapper.xml"/>
+        <mapper resource="com/socialnetwork/mapper/SavedPostMapper.xml"/>
+    </mappers>
+</configuration>

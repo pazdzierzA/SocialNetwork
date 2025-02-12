@@ -7,9 +7,9 @@ import com.solvd.socialnetwork.daos.mySQLImpl.FriendshipDAO;
 import com.solvd.socialnetwork.enums.FriendshipStatus;
 import com.solvd.socialnetwork.enums.FriendshipType;
 import com.solvd.socialnetwork.models.Friendship;
-import com.solvd.socialnetwork.services.IFriendshipEvent;
+import com.solvd.socialnetwork.services.IFriendshipService;
 
-public class FriendshipEvent implements IFriendshipEvent {
+public class FriendshipService implements IFriendshipService {
 	private IFriendshipDAO friendshipDAO = new FriendshipDAO();
 	@Override
 	public Friendship getById(Long id) {

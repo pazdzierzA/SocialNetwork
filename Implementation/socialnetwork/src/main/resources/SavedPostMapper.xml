@@ -1,0 +1,30 @@
+<mapper namespace="com.solvd.socialnetwork.daos.ISavedPostDAO">
+    <resultMap id="SavedPostResultMap" type="com.solvd.socialnetwork.models.SavedPost" autoMapping="false">
+        <id column="ID" property="id"/>
+        <result column="USER_ID" property="userId"/>
+        <result column="POST_ID" property="postId"/>
+    </resultMap>
+
+    <select id="getById" resultMap="SavedPostResultMap">
+        SELECT * FROM SAVED_POSTS WHERE ID = #{id}
+    </select>
+
+    <select id="getByUserId" resultMap="SavedPostResultMap">
+        SELECT * FROM SAVED_POSTS WHERE USER_ID = #{userId}
+    </select>
+
+    <update id="update" parameterType="com.solvd.socialnetwork.models.SavedPost">
+        UPDATE SAVED_POSTS 
+        SET USER_ID = #{userId}, POST_ID = #{postId}
+        WHERE ID = #{id}
+    </update>
+
+    <insert id="save" parameterType="com.solvd.socialnetwork.models.SavedPost" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO SAVED_POSTS (USER_ID, POST_ID)
+        VALUES (#{userId}, #{postId})
+    </insert>
+
+    <delete id="delete" parameterType="com.solvd.socialnetwork.models.SavedPost">
+        DELETE FROM SAVED_POSTS WHERE ID = #{id}
+    </delete>
+</mapper>

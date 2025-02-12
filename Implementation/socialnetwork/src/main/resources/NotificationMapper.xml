@@ -1,0 +1,27 @@
+<mapper namespace="com.solvd.socialnetwork.daos.INotificationDAO">
+    <resultMap id="NotificationResultMap" type="com.solvd.socialnetwork.models.Notification" autoMapping="false">
+        <id column="ID" property="id"/>
+        <result column ="TEXT" property="text"/>
+        <result column="TYPE" property="type"/>
+        <result column="USER_ID" property="userId"/>
+    </resultMap>
+
+    <select id="getById" resultMap="NotificationResultMap">
+        SELECT * FROM NOTIFICATIONS WHERE ID = #{id}
+    </select>
+
+    <select id = "getByType" resultMap="NotificationResultMap">
+        SELECT * FROM NOTIFICATIONS WHERE TYPE = #{type}
+    </select>
+    <update id="update" parameterType="com.solvd.socialnetwork.models.Notification">
+        UPDATE NOTIFICATIONS SET TEXT = #{text}, TYPE = #{type}, USER_ID = #{userId}
+        WHERE ID = #{id}
+    </update>
+    <insert id="save" parameterType="com.solvd.socialnetwork.models.Notification" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO NOTIFICATIONS (TEXT, TYPE, USER_ID)
+        VALUES (#{text}, #{type}, #{userId})
+    </insert>
+
+    <delete id="delete" parameterType="com.solvd.socialnetwork.models.Notification">
+        DELETE FROM NOTIFICATIONS WHERE ID = #{id}
+    </delete>

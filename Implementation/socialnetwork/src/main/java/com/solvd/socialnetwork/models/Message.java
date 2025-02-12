@@ -14,7 +14,6 @@ public class Message extends BaseEntity {
 	}
 
 	public Message() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getText() {

@@ -1,0 +1,35 @@
+<mapper namespace="com.solvd.socialnetwork.daos.ICommentDAO">
+    <resultMap id="CommentResultMap" type="com.solvd.socialnetwork.models.Comment" autoMapping="false">
+        <id column="ID" property="id"/>
+        <result column="TEXT" property="text"/>
+        <result column="AUTHOR_ID" property="authorId"/>
+        <result column="POST_ID" property="postId"/>
+    </resultMap>
+
+    <select id="getById" resultMap="CommentResultMap">
+        SELECT * FROM COMMENTS WHERE ID = #{id}
+    </select>
+
+    <select id="getByPostId" resultMap="CommentResultMap">
+        SELECT * FROM COMMENTS WHERE POST_ID = #{postId}
+    </select>
+
+    <select id="getByAuthorId" resultMap="CommentResultMap">
+        SELECT * FROM COMMENTS WHERE AUTHOR_ID = #{authorId}
+    </select>
+
+    <insert id="save" parameterType="com.solvd.socialnetwork.models.Comment" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO COMMENTS (TEXT, AUTHOR_ID, POST_ID)
+        VALUES (#{text}, #{authorId}, #{postId})   
+    </insert>
+
+    <update id="update" parameterType="com.solvd.socialnetwork.models.Comment">
+        UPDATE COMMENTS 
+        SET TEXT = #{text}, AUTHOR_ID = #{authorId}, POST_ID = #{postId}
+        WHERE ID = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM COMMENTS WHERE ID = #{id}
+    </delete>
+</mapper>

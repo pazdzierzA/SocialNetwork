@@ -1,0 +1,29 @@
+<mapper namespace="com.solvd.socialnetwork.daos.ILikePostDAO">
+    <resultMap id="LikePostResultMap" type="com.solvd.socialnetwork.models.LikePost" autoMapping="false">
+        <id column="ID" property="id"/>
+        <result column="POST_ID" property="postId"/>
+        <result column="USER_ID" property="userId"/>
+    </resultMap>
+
+    <select id="getById" resultMap="LikePostResultMap">
+        SELECT * FROM LIKES_POSTS WHERE ID = #{id}
+    </select>
+
+    <select id="getByPostId" resultMap="LikePostResultMap">
+        SELECT * FROM LIKES_POSTS WHERE POST_ID = #{postId}
+    </select>
+
+    <insert id="save" parameterType="com.solvd.socialnetwork.models.LikePost" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO LIKES_POSTS (POST_ID, USER_ID)
+        VALUES (#{postId}, #{userId})
+    </insert>
+
+    <update id="update" parameterType="com.solvd.socialnetwork.models.LikePost">
+        UPDATE LIKES_POSTS SET POST_ID = #{postId}, USER_ID = #{userId}
+        WHERE ID = #{id}
+    </update>
+
+    <delete id="delete" parameterType="com.solvd.socialnetwork.models.LikePost">
+        DELETE FROM LIKES_POSTS WHERE ID = #{id}
+    </delete>
+</mapper>

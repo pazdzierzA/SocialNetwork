@@ -1,0 +1,28 @@
+<mapper namespace = "com.solvd.socialnetwork.daos.IMessageDAO" >
+<resultMap id = "MessageResultMap" type = "com.solvd.socialnetwork.models.Message" autoMapping = "false" >
+    <id column = "ID" property = "id" />
+    <result column = "TEXT" property = "text" />
+    <result columnn = "FROM_USER_ID" property = "senderId" />
+    <result column = "TO_USER_ID" property = "recipientId" />
+</resultMap>
+<select id = "getById" resultMap = "MessageResultMap" >
+    SELECT * FROM MESSAGES WHERE ID = #{id}
+</select>
+
+<select id = "getByUserid" resultMap = "MessageResultMap" >
+    SELECT * FROM MESSAGES WHERE FROM_USER_ID = #{userId} OR TO_USER_ID = #{userId}
+</select>
+
+<insert id = "save" parameterType = "com.solvd.socialnetwork.models.Message" useGeneratedKeys = "true" keyProperty = "id" >
+    INSERT INTO MESSAGES (TEXT, FROM_USER_ID, TO_USER_ID)
+    VALUES (#{text}, #{senderId}, #{recipientId})
+</insert>
+
+<update id = "update" parameterType = "com.solvd.socialnetwork.models.Message" >
+    UPDATE MESSAGES SET TEXT = #{text}, FROM_USER_ID = #{senderId}, TO_USER_ID = #{recipientId}
+    WHERE ID = #{id}
+</update>
+
+<delete id = "delete" parameterType = "com.solvd.socialnetwork.models.Message" >
+    DELETE FROM MESSAGES WHERE ID = #{id}
+</delete>

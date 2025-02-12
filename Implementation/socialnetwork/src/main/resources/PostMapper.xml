@@ -1,0 +1,32 @@
+<mapper namespace="com.solvd.socialnetwork.daos.IPostDAO">
+    <resultMap id="PostResultMap" type="com.solvd.socialnetwork.models.Post" autoMapping="false">
+        <id column="ID" property="id"/>
+        <result column="TITLE" property="title"/>
+        <result column="TEXT" property="text"/>
+        <result column="LIKE_QUANTITY" property="likeQuantity"/>
+        <result column="COMMENT_QUANTITY" property="commentQuantity"/>
+        <result column="CREATOR_ID" property="creatorId"/>
+        <collection property="comments" ofType="com.solvd.socialnetwork.models.Comment" column="ID" select="com.solvd.socialnetwork.resources.CommentMapper.getCommentsByPostId"/>
+        <collection property="likes" ofType="com.solvd.socialnetwork.models.Like" column="ID" select="com.solvd.socialnetwork.resources.LikeMapper.getLikesByPostId"/>
+    </resultMap>
+
+    <select id="getById" resultMap="PostResultMap">
+        SELECT * FROM POSTS WHERE ID = #{id}
+    </select>
+    <insert id="save" parameterType="com.solvd.socialnetwork.models.Post" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO POSTS (TITLE, TEXT, LIKE_QUANTITY, COMMENT_QUANTITY, CREATOR_ID)
+        VALUES (#{title}, #{text}, #{likeQuantity}, #{commentQuantity}, #{creatorId})
+    </insert>
+
+    <update id="update" parameterType="com.solvd.socialnetwork.models.Post">
+        UPDATE POSTS SET TITLE = #{title}, TEXT = #{text}, LIKE_QUANTITY = #{likeQuantity}, COMMENT_QUANTITY = #{commentQuantity}, CREATOR_ID = #{creatorId}
+        WHERE ID = #{id}
+    </update>
+    <update id = "incrementLikeCount" parameterType="com.solvd.socialnetwork.models.Post">
+        UPDATE POSTS SET LIKE_QUANTITY = LIKE_QUANTITY + 1 WHERE ID = #{id}
+    </update>
+    
+    <delete id="delete" parameterType="com.solvd.socialnetwork.models.Post">
+        DELETE FROM POSTS WHERE ID = #{id}  
+    </delete>
+</mapper>

@@ -12,7 +12,6 @@ public class LikePost extends BaseEntity{
 	}
 
 	public LikePost() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Long getPostId() {
