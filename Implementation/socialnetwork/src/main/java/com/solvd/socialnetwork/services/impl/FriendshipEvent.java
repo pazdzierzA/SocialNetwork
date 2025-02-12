@@ -23,7 +23,6 @@ public class FriendshipEvent implements IFriendshipEvent {
 
 	@Override
 	public Friendship update(Friendship entity) {
-		// TODO Auto-generated method stub
 		return friendshipDAO.update(entity);
 	}
 

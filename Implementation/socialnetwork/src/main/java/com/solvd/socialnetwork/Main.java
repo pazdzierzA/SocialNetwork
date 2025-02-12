@@ -71,7 +71,7 @@ public class Main {
 		List<Comment> parsedComments = new ArrayList<>();
 		List<GroupMember> parsedGroupMembers = new ArrayList<>();
 
-		InputSource inputFile = new InputSource("src/main/resources/social_networks.xml");
+		InputSource inputFile = new InputSource("src/main/resources/xmls/social_networks.xml");
 		SAXParserFactory spf = SAXParserFactory.newInstance();
 		spf.setNamespaceAware(true);
 		SAXLocal saxLocal = new SAXLocal();
@@ -127,7 +127,7 @@ public class Main {
 		PostWrapper result = null;
 		
         try {
-        	InputSource inputFilePost = new InputSource("src/main/resources/posts.xml");
+        	InputSource inputFilePost = new InputSource("src/main/resources/xmls/posts.xml");
         	JAXBContext context = JAXBContext.newInstance(PostWrapper.class);
 			Marshaller marshaller = context.createMarshaller();
 			Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -152,8 +152,8 @@ public class Main {
         try {
         	ObjectMapper objectMapper = new ObjectMapper();
         	objectMapper.registerModule(new JavaTimeModule());
-			SocialNetwork socialNetworkData = objectMapper.readValue(new File("src/main/resources/social_network.json"), SocialNetwork.class);
-			objectMapper.writeValue(new File("src/main/resources/social_networks.json"), socialNetworkData);
+			SocialNetwork socialNetworkData = objectMapper.readValue(new File("src/main/resources/jsons/social_network.json"), SocialNetwork.class);
+			objectMapper.writeValue(new File("src/main/resources/jsons/social_networks.json"), socialNetworkData);
 			
 			
 			Post post = new Post((long)1,"This is my first post!","Introduction",20, 5,(long)1 );
@@ -175,7 +175,7 @@ public class Main {
 			secondPost.setLikes(likes);
 			
 			//ObjectMapper objectMapper1 = new ObjectMapper();
-			objectMapper.writeValue(new File("src/main/resources/posts.json"), allPosts);
+			objectMapper.writeValue(new File("src/main/resources/jsons/posts.json"), allPosts);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
