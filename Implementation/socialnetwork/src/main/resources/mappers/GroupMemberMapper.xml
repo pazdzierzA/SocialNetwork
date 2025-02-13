@@ -1,0 +1,37 @@
+<mapper namespace="com.solvd.socialnetwork.daos.IGroupMemberDAO">
+    <resultMap id="GroupMemberResultMap" type="com.solvd.socialnetwork.models.GroupMember" autoMapping="false">
+        <id column="ID" property="id"/>
+        <result column="ROLE" property="userRole"/>
+        <result column="USER_ID" property="userId"/>
+        <result column="GROUP_ID" property="groupId"/>
+    </resultMap>
+
+    <select id="getById" resultMap="GroupMemberResultMap">
+        SELECT * FROM GROUP_MEMBERS WHERE ID = #{id}
+    </select>
+
+    <select id="getUsersByGroupId" resultMap="GroupMemberResultMap">
+        SELECT u.* FROM Users u
+        LEFT JOIN GroupMembers gm ON u.id = gm.user_id
+        WHERE gm.group_id = #{groupId}
+    </select>
+
+    <select id="getByUserRole" resultMap="GroupMemberResultMap">
+        SELECT * FROM GROUP_MEMBERS WHERE ROLE = #{userRole}
+    </select>
+
+    <update id="update" parameterType="com.solvd.socialnetwork.models.GroupMember">
+        UPDATE GROUP_MEMBERS
+        SET ROLE = #{userRole}, USER_ID = #{userId}, GROUP_ID = #{groupId}
+        WHERE ID = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM GROUP_MEMBERS WHERE ID = #{id}
+    </delete>
+
+    <insert id="save" parameterType="com.solvd.socialnetwork.models.GroupMember" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO GROUP_MEMBERS (ROLE, USER_ID, GROUP_ID)
+        VALUES (#{userRole}, #{userId}, #{groupId})
+    </insert>
+</mapper>

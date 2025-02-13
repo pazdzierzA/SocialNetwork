@@ -1,0 +1,29 @@
+<configuration>
+    <properties resource="_database.properties"/>
+    <environments default="Stag">
+        <environment id="Stag">
+            <datasource type="POOLED">
+                <property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
+            </datasource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/UserMapper.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/PostMapper.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/CommentMapper.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/MessageMapper.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/NotificationMapper.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/RelationshipMapper.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/GroupMapper.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/GroupMemberMapper.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/EventMappper.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/EventParticipantMapper.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/Friendship.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/LikePostMapper.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/StoryMapper.xml"/>
+        <mapper resource="com/solvd/socialnetwork/resources/mappers/SavedPostMapper.xml"/>
+    </mappers>
+</configuration>
