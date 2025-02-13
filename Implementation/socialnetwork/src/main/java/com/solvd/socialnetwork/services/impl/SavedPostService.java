@@ -3,7 +3,7 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.ISavedPostDAO;
-import com.solvd.socialnetwork.daos.mySQLImpl.SavedPostDAO;
+import com.solvd.socialnetwork.daos.mybatisImpl.SavedPostDAO;
 import com.solvd.socialnetwork.models.SavedPost;
 import com.solvd.socialnetwork.services.ISavedPostService;
 

@@ -3,7 +3,7 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IMessageDAO;
-import com.solvd.socialnetwork.daos.mySQLImpl.MessageDAO;
+import com.solvd.socialnetwork.daos.mybatisImpl.MessageDAO;
 import com.solvd.socialnetwork.models.Message;
 import com.solvd.socialnetwork.services.IMessageService;
 
@@ -18,7 +18,6 @@ public class MessageService implements IMessageService {
 
 	@Override
 	public Message save(Message entity) {
-
 		return messageDAO.save(entity);
 	}
 

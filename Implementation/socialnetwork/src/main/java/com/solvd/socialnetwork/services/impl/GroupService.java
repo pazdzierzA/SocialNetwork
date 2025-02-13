@@ -3,7 +3,7 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IGroupDAO;
-import com.solvd.socialnetwork.daos.mySQLImpl.GroupDAO;
+import com.solvd.socialnetwork.daos.mybatisImpl.GroupDAO;
 import com.solvd.socialnetwork.models.Group;
 import com.solvd.socialnetwork.services.IGroupService;
 

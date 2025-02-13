@@ -1,6 +1,6 @@
 package com.solvd.socialnetwork.services.impl;
 
-import com.solvd.socialnetwork.daos.mySQLImpl.LikePostDAO;
+import com.solvd.socialnetwork.daos.mybatisImpl.LikePostDAO;
 import com.solvd.socialnetwork.daos.ILikePostDAO;
 import com.solvd.socialnetwork.models.LikePost;
 import com.solvd.socialnetwork.services.ILikeService;

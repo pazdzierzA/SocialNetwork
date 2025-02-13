@@ -3,7 +3,7 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IGroupMemberDAO;
-import com.solvd.socialnetwork.daos.mySQLImpl.GroupMemberDAO;
+import com.solvd.socialnetwork.daos.mybatisImpl.GroupMemberDAO;
 import com.solvd.socialnetwork.enums.UserRole;
 import com.solvd.socialnetwork.models.GroupMember;
 import com.solvd.socialnetwork.models.User;

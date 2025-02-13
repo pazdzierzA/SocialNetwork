@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IUserDAO;
-import com.solvd.socialnetwork.daos.mySQLImpl.UserDAO;
+import com.solvd.socialnetwork.daos.mybatisImpl.UserDAO;
 import com.solvd.socialnetwork.models.User;
 import com.solvd.socialnetwork.services.IUserService;
 

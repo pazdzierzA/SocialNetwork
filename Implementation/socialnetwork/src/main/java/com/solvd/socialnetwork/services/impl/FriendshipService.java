@@ -3,7 +3,7 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IFriendshipDAO;
-import com.solvd.socialnetwork.daos.mySQLImpl.FriendshipDAO;
+import com.solvd.socialnetwork.daos.mybatisImpl.FriendshipDAO;
 import com.solvd.socialnetwork.enums.FriendshipStatus;
 import com.solvd.socialnetwork.enums.FriendshipType;
 import com.solvd.socialnetwork.models.Friendship;

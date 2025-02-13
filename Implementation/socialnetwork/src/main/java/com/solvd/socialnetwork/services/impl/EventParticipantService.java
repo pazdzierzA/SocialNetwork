@@ -3,7 +3,7 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IEventParticipantDAO;
-import com.solvd.socialnetwork.daos.mySQLImpl.EventParticipantDAO;
+import com.solvd.socialnetwork.daos.mybatisImpl.EventParticipantDAO;
 import com.solvd.socialnetwork.models.EventParticipant;
 import com.solvd.socialnetwork.services.IEventParticipantService;
 

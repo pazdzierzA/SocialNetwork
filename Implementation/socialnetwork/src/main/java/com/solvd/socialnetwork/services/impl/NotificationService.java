@@ -3,7 +3,7 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.INotificationDAO;
-import com.solvd.socialnetwork.daos.mySQLImpl.NotificationDAO;
+import com.solvd.socialnetwork.daos.mybatisImpl.NotificationDAO;
 import com.solvd.socialnetwork.enums.NotificationType;
 import com.solvd.socialnetwork.models.Notification;
 import com.solvd.socialnetwork.services.INotificationService;

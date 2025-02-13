@@ -1,7 +1,7 @@
 package com.solvd.socialnetwork.services.impl;
 
 import com.solvd.socialnetwork.daos.IPostDAO;
-import com.solvd.socialnetwork.daos.mySQLImpl.PostDAO;
+import com.solvd.socialnetwork.daos.mybatisImpl.PostDAO;
 import com.solvd.socialnetwork.models.Post;
 import com.solvd.socialnetwork.services.IPostService;
 

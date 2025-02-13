@@ -1,7 +1,7 @@
 package com.solvd.socialnetwork.services.impl;
 
 import com.solvd.socialnetwork.daos.IStoryDAO;
-import com.solvd.socialnetwork.daos.mySQLImpl.StoryDAO;
+import com.solvd.socialnetwork.daos.mybatisImpl.StoryDAO;
 import com.solvd.socialnetwork.models.Story;
 import com.solvd.socialnetwork.services.IStoryService;
 
