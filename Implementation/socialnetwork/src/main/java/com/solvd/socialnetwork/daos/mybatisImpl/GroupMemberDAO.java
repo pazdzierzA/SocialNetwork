@@ -22,7 +22,7 @@ public class GroupMemberDAO implements IGroupMemberDAO {
     }
 
     @Override
-    public GroupMember save(GroupMember entity) {
+    public Integer save(GroupMember entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IGroupMemberDAO groupMemberDao = session.getMapper(IGroupMemberDAO.class);
             return groupMemberDao.save(entity);
@@ -31,7 +31,7 @@ public class GroupMemberDAO implements IGroupMemberDAO {
     }
 
     @Override
-    public GroupMember update(GroupMember entity) {
+    public Integer update(GroupMember entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IGroupMemberDAO groupMemberDao = session.getMapper(IGroupMemberDAO.class);
             return groupMemberDao.update(entity);

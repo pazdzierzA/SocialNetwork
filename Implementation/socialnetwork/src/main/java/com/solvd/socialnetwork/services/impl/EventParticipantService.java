@@ -16,12 +16,12 @@ public class EventParticipantService implements IEventParticipantService {
 	}
 
 	@Override
-	public EventParticipant save(EventParticipant entity) {
+	public Integer save(EventParticipant entity) {
 		return eventParticipantDAO.save(entity);
 	}
 
 	@Override
-	public EventParticipant update(EventParticipant entity) {
+	public Integer update(EventParticipant entity) {
 		return eventParticipantDAO.update(entity);
 	}
 	@Override

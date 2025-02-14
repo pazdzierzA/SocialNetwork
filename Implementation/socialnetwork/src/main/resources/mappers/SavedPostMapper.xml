@@ -1,3 +1,7 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.solvd.socialnetwork.daos.ISavedPostDAO">
     <resultMap id="SavedPostResultMap" type="com.solvd.socialnetwork.models.SavedPost" autoMapping="false">
         <id column="ID" property="id"/>
@@ -6,25 +10,25 @@
     </resultMap>
 
     <select id="getById" resultMap="SavedPostResultMap">
-        SELECT * FROM SAVED_POSTS WHERE ID = #{id}
+        SELECT * FROM Saved_Posts WHERE ID = #{id}
     </select>
 
     <select id="getByUserId" resultMap="SavedPostResultMap">
-        SELECT * FROM SAVED_POSTS WHERE USER_ID = #{userId}
+        SELECT * FROM Saved_Posts WHERE USER_ID = #{userId}
     </select>
 
     <update id="update" parameterType="com.solvd.socialnetwork.models.SavedPost">
-        UPDATE SAVED_POSTS 
+        UPDATE Saved_Posts
         SET USER_ID = #{userId}, POST_ID = #{postId}
         WHERE ID = #{id}
     </update>
 
     <insert id="save" parameterType="com.solvd.socialnetwork.models.SavedPost" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO SAVED_POSTS (USER_ID, POST_ID)
+        INSERT INTO Saved_Posts (USER_ID, POST_ID)
         VALUES (#{userId}, #{postId})
     </insert>
 
     <delete id="delete" parameterType="com.solvd.socialnetwork.models.SavedPost">
-        DELETE FROM SAVED_POSTS WHERE ID = #{id}
+        DELETE FROM Saved_Posts WHERE ID = #{id}
     </delete>
 </mapper>

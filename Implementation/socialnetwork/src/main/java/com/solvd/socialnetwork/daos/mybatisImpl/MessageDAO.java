@@ -20,7 +20,7 @@ public class MessageDAO implements IMessageDAO{
     }
 
     @Override
-    public Message save(Message entity) {
+    public Integer save(Message entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IMessageDAO messageDao = session.getMapper(IMessageDAO.class);
             return messageDao.save(entity);
@@ -29,7 +29,7 @@ public class MessageDAO implements IMessageDAO{
     }
 
     @Override
-    public Message update(Message entity) {
+    public Integer update(Message entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IMessageDAO messageDao = session.getMapper(IMessageDAO.class);
             return messageDao.update(entity);

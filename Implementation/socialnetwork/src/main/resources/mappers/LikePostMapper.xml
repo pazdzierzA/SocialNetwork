@@ -1,3 +1,7 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.solvd.socialnetwork.daos.ILikePostDAO">
     <resultMap id="LikePostResultMap" type="com.solvd.socialnetwork.models.LikePost" autoMapping="false">
         <id column="ID" property="id"/>
@@ -6,24 +10,24 @@
     </resultMap>
 
     <select id="getById" resultMap="LikePostResultMap">
-        SELECT * FROM LIKES_POSTS WHERE ID = #{id}
+        SELECT * FROM Posts_Likes WHERE ID = #{id}
     </select>
 
     <select id="getByPostId" resultMap="LikePostResultMap">
-        SELECT * FROM LIKES_POSTS WHERE POST_ID = #{postId}
+        SELECT * FROM Posts_Likes WHERE POST_ID = #{postId}
     </select>
 
     <insert id="save" parameterType="com.solvd.socialnetwork.models.LikePost" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO LIKES_POSTS (POST_ID, USER_ID)
+        INSERT INTO Posts_Likes (POST_ID, USER_ID)
         VALUES (#{postId}, #{userId})
     </insert>
 
     <update id="update" parameterType="com.solvd.socialnetwork.models.LikePost">
-        UPDATE LIKES_POSTS SET POST_ID = #{postId}, USER_ID = #{userId}
+        UPDATE Posts_Likes SET POST_ID = #{postId}, USER_ID = #{userId}
         WHERE ID = #{id}
     </update>
 
     <delete id="delete" parameterType="com.solvd.socialnetwork.models.LikePost">
-        DELETE FROM LIKES_POSTS WHERE ID = #{id}
+        DELETE FROM Posts_Likes WHERE ID = #{id}
     </delete>
 </mapper>

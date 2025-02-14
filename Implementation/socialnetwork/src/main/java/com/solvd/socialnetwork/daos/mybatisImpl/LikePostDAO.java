@@ -17,7 +17,7 @@ public class LikePostDAO implements ILikePostDAO{
     }
 
     @Override
-    public LikePost save(LikePost entity) {
+    public Integer save(LikePost entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             ILikePostDAO likePostDAO = session.getMapper(ILikePostDAO.class);
             return likePostDAO.save(entity);
@@ -25,7 +25,7 @@ public class LikePostDAO implements ILikePostDAO{
     }
 
     @Override
-    public LikePost update(LikePost entity) {
+    public Integer update(LikePost entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             ILikePostDAO likePostDAO = session.getMapper(ILikePostDAO.class);
             return likePostDAO.update(entity);

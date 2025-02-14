@@ -13,12 +13,12 @@ public class LikeService implements ILikeService {
 	}
 
 	@Override
-	public LikePost save(LikePost entity) {
+	public Integer save(LikePost entity) {
 		return likeDAO.save(entity);
 	}
 
 	@Override
-	public LikePost update(LikePost entity) {
+	public Integer update(LikePost entity) {
 		return likeDAO.update(entity);
 	}
 

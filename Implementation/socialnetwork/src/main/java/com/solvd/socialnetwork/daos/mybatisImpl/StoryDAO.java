@@ -17,7 +17,7 @@ public class StoryDAO implements IStoryDAO{
     }
 
     @Override
-    public Story save(Story entity) {
+    public Integer save(Story entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IStoryDAO storyDao = session.getMapper(IStoryDAO.class);
             return storyDao.save(entity);
@@ -25,7 +25,7 @@ public class StoryDAO implements IStoryDAO{
     }
 
     @Override
-    public Story update(Story entity) {
+    public Integer update(Story entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IStoryDAO storyDao = session.getMapper(IStoryDAO.class);
             return storyDao.update(entity);

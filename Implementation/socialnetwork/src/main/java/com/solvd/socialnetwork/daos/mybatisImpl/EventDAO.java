@@ -19,7 +19,7 @@ public class EventDAO implements IEventDAO{
 }
 
     @Override
-    public Event save(Event entity) {
+    public Integer save(Event entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IEventDAO eventDao = session.getMapper(IEventDAO.class);
             return eventDao.save(entity);
@@ -27,7 +27,7 @@ public class EventDAO implements IEventDAO{
     }
 
     @Override
-    public Event update(Event entity) {
+    public Integer update(Event entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IEventDAO eventDao = session.getMapper(IEventDAO.class);
             return eventDao.update(entity);

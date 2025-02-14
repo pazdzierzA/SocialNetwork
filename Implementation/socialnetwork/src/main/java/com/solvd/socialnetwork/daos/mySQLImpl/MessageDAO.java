@@ -46,7 +46,7 @@ public class MessageDAO extends AbstractMySQLDAO<Message> implements IMessageDAO
 	}
 
 	@Override
-	public Message save(Message entity) {
+	public Integer save(Message entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -70,11 +70,11 @@ public class MessageDAO extends AbstractMySQLDAO<Message> implements IMessageDAO
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override
-	public Message update(Message entity) {
+	public Integer update(Message entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -93,7 +93,7 @@ public class MessageDAO extends AbstractMySQLDAO<Message> implements IMessageDAO
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override

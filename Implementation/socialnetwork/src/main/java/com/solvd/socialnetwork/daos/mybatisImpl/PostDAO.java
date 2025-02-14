@@ -17,7 +17,7 @@ public class PostDAO implements IPostDAO{
     }
 
     @Override
-    public Post save(Post entity) {
+    public Integer save(Post entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IPostDAO postDao = session.getMapper(IPostDAO.class);
             return postDao.save(entity);
@@ -26,7 +26,7 @@ public class PostDAO implements IPostDAO{
     }
 
     @Override
-    public Post update(Post entity) {
+    public Integer update(Post entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IPostDAO postDao = session.getMapper(IPostDAO.class);
             return postDao.update(entity);

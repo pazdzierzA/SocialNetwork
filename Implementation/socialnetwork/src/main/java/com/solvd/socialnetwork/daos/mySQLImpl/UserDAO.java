@@ -62,7 +62,7 @@ public class UserDAO extends AbstractMySQLDAO<User> implements IUserDAO{
 	}
 
 	@Override
-	public User save(User entity) {
+	public Integer save(User entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -90,11 +90,11 @@ public class UserDAO extends AbstractMySQLDAO<User> implements IUserDAO{
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
 		logger.info("Entity added");
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override
-	public User update(User entity) {
+	public Integer update(User entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -117,7 +117,7 @@ public class UserDAO extends AbstractMySQLDAO<User> implements IUserDAO{
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
 		logger.info("Entity upgraded");
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override

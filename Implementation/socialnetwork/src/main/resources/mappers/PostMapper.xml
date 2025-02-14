@@ -1,3 +1,7 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.solvd.socialnetwork.daos.IPostDAO">
     <resultMap id="PostResultMap" type="com.solvd.socialnetwork.models.Post" autoMapping="false">
         <id column="ID" property="id"/>
@@ -11,22 +15,22 @@
     </resultMap>
 
     <select id="getById" resultMap="PostResultMap">
-        SELECT * FROM POSTS WHERE ID = #{id}
+        SELECT * FROM Posts WHERE ID = #{id}
     </select>
     <insert id="save" parameterType="com.solvd.socialnetwork.models.Post" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO POSTS (TITLE, TEXT, LIKE_QUANTITY, COMMENT_QUANTITY, CREATOR_ID)
+        INSERT INTO Posts (TITLE, TEXT, LIKE_QUANTITY, COMMENT_QUANTITY, CREATOR_ID)
         VALUES (#{title}, #{text}, #{likeQuantity}, #{commentQuantity}, #{creatorId})
     </insert>
 
     <update id="update" parameterType="com.solvd.socialnetwork.models.Post">
-        UPDATE POSTS SET TITLE = #{title}, TEXT = #{text}, LIKE_QUANTITY = #{likeQuantity}, COMMENT_QUANTITY = #{commentQuantity}, CREATOR_ID = #{creatorId}
+        UPDATE Posts SET TITLE = #{title}, TEXT = #{text}, LIKE_QUANTITY = #{likeQuantity}, COMMENT_QUANTITY = #{commentQuantity}, CREATOR_ID = #{creatorId}
         WHERE ID = #{id}
     </update>
     <update id = "incrementLikeCount" parameterType="com.solvd.socialnetwork.models.Post">
-        UPDATE POSTS SET LIKE_QUANTITY = LIKE_QUANTITY + 1 WHERE ID = #{id}
+        UPDATE Posts SET LIKE_QUANTITY = LIKE_QUANTITY + 1 WHERE ID = #{id}
     </update>
     
     <delete id="delete" parameterType="com.solvd.socialnetwork.models.Post">
-        DELETE FROM POSTS WHERE ID = #{id}  
+        DELETE FROM Posts WHERE ID = #{id}  
     </delete>
 </mapper>

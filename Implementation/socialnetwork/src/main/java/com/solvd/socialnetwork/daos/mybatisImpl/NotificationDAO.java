@@ -21,7 +21,7 @@ public class NotificationDAO implements INotificationDAO{
     }
 
     @Override
-    public Notification save(Notification entity) {
+    public Integer save(Notification entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             INotificationDAO notificationDao = session.getMapper(INotificationDAO.class);
             return notificationDao.save(entity);
@@ -30,7 +30,7 @@ public class NotificationDAO implements INotificationDAO{
     }
 
     @Override
-    public Notification update(Notification entity) {
+    public Integer update(Notification entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             INotificationDAO notificationDao = session.getMapper(INotificationDAO.class);
             return notificationDao.update(entity);

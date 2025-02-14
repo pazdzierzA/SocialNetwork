@@ -43,7 +43,7 @@ public class StoryDAO extends AbstractMySQLDAO<Story> implements IStoryDAO{
 		return story;
 	}
 	@Override
-	public Story save(Story entity) {
+	public Integer save(Story entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -67,10 +67,10 @@ public class StoryDAO extends AbstractMySQLDAO<Story> implements IStoryDAO{
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 	@Override
-	public Story update(Story entity) {
+	public Integer update(Story entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -89,7 +89,7 @@ public class StoryDAO extends AbstractMySQLDAO<Story> implements IStoryDAO{
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 	@Override
 	public void removeById(Long id) {

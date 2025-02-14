@@ -1,4 +1,9 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.solvd.socialnetwork.daos.IGroupMemberDAO">
+
     <resultMap id="GroupMemberResultMap" type="com.solvd.socialnetwork.models.GroupMember" autoMapping="false">
         <id column="ID" property="id"/>
         <result column="ROLE" property="userRole"/>
@@ -7,31 +12,31 @@
     </resultMap>
 
     <select id="getById" resultMap="GroupMemberResultMap">
-        SELECT * FROM GROUP_MEMBERS WHERE ID = #{id}
+        SELECT * FROM Group_Members WHERE ID = #{id}
     </select>
 
     <select id="getUsersByGroupId" resultMap="GroupMemberResultMap">
         SELECT u.* FROM Users u
-        LEFT JOIN GroupMembers gm ON u.id = gm.user_id
+        LEFT JOIN Group_Members gm ON u.id = gm.user_id
         WHERE gm.group_id = #{groupId}
     </select>
 
     <select id="getByUserRole" resultMap="GroupMemberResultMap">
-        SELECT * FROM GROUP_MEMBERS WHERE ROLE = #{userRole}
+        SELECT * FROM Group_Members WHERE ROLE = #{userRole}
     </select>
 
     <update id="update" parameterType="com.solvd.socialnetwork.models.GroupMember">
-        UPDATE GROUP_MEMBERS
+        UPDATE Group_Members
         SET ROLE = #{userRole}, USER_ID = #{userId}, GROUP_ID = #{groupId}
         WHERE ID = #{id}
     </update>
 
     <delete id="delete" parameterType="int">
-        DELETE FROM GROUP_MEMBERS WHERE ID = #{id}
+        DELETE FROM Group_Members WHERE ID = #{id}
     </delete>
 
     <insert id="save" parameterType="com.solvd.socialnetwork.models.GroupMember" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO GROUP_MEMBERS (ROLE, USER_ID, GROUP_ID)
+        INSERT INTO Group_Members (ROLE, USER_ID, GROUP_ID)
         VALUES (#{userRole}, #{userId}, #{groupId})
     </insert>
 </mapper>

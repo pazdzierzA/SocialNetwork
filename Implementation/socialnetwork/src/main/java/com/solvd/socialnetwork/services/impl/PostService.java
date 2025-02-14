@@ -14,12 +14,12 @@ public class PostService implements IPostService {
 	}
 
 	@Override
-	public Post save(Post entity) {
+	public Integer save(Post entity) {
 		return postDAO.save(entity);
 	}
 
 	@Override
-	public Post update(Post entity) {
+	public Integer update(Post entity) {
 		return postDAO.update(entity);
 	}
 

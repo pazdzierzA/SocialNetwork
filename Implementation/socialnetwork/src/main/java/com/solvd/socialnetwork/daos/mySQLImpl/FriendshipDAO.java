@@ -54,7 +54,7 @@ public class FriendshipDAO extends AbstractMySQLDAO<Friendship> implements IFrie
 	}
 
 	@Override
-	public Friendship save(Friendship entity) {
+	public Integer save(Friendship entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -80,11 +80,11 @@ public class FriendshipDAO extends AbstractMySQLDAO<Friendship> implements IFrie
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override
-	public Friendship update(Friendship entity) {
+	public Integer update(Friendship entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -105,7 +105,7 @@ public class FriendshipDAO extends AbstractMySQLDAO<Friendship> implements IFrie
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override

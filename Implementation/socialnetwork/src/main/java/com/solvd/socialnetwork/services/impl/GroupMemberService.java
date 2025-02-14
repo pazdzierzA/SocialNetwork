@@ -18,12 +18,12 @@ public class GroupMemberService implements IGroupMemberService {
 	}
 
 	@Override
-	public GroupMember save(GroupMember entity) {
+	public Integer save(GroupMember entity) {
 		return groupMemberDAO.save(entity);
 	}
 
 	@Override
-	public GroupMember update(GroupMember entity) {
+	public Integer update(GroupMember entity) {
 		return groupMemberDAO.update(entity);
 	}
 

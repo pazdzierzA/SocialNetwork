@@ -16,12 +16,12 @@ public class EventService implements IEventService {
 	}
 
 	@Override
-	public Event save(Event entity) {
+	public Integer save(Event entity) {
 		return eventDAO.save(entity);
 	}
 
 	@Override
-	public Event update(Event entity) {
+	public Integer update(Event entity) {
 		return eventDAO.update(entity);
 	}
 

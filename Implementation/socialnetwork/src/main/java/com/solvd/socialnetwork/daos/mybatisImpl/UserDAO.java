@@ -13,13 +13,14 @@ public class UserDAO implements IUserDAO {
     @Override
     public User getById(Long id) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
+           
             IUserDAO userDao = session.getMapper(IUserDAO.class);
             return userDao.getById(id);
         }
     }
 
     @Override
-    public User save(User entity) {
+    public Integer save(User entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IUserDAO userDao = session.getMapper(IUserDAO.class);
             return userDao.save(entity);
@@ -28,7 +29,7 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
-    public User update(User entity) {
+    public Integer update(User entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IUserDAO userDao = session.getMapper(IUserDAO.class);
             return userDao.update(entity);

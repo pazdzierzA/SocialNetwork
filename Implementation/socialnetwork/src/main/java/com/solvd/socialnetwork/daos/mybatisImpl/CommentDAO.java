@@ -19,7 +19,7 @@ public class CommentDAO implements ICommentDAO {
     }
 
     @Override
-    public Comment save(Comment entity) {
+    public Integer save(Comment entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             ICommentDAO commentDao = session.getMapper(ICommentDAO.class);
             return commentDao.save(entity);
@@ -27,7 +27,7 @@ public class CommentDAO implements ICommentDAO {
     }
 
     @Override
-    public Comment update(Comment entity) {
+    public Integer update(Comment entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             ICommentDAO commentDao = session.getMapper(ICommentDAO.class);
             return commentDao.update(entity);

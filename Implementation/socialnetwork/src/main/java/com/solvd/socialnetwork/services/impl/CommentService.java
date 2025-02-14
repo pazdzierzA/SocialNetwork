@@ -27,13 +27,13 @@ public class CommentService implements ICommentService {
 	}
 
 	@Override
-	public Comment save(Comment entity) {
+	public Integer save(Comment entity) {
 
 		return commentDAO.save(entity);
 	}
 
 	@Override
-	public Comment update(Comment entity) {
+	public Integer update(Comment entity) {
 		return commentDAO.update(entity);
 	}
 

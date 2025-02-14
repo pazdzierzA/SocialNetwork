@@ -13,13 +13,13 @@ public class StoryService implements IStoryService {
 	}
 
 	@Override
-	public Story save(Story entity) {
+	public Integer save(Story entity) {
 		
 		return storyDAO.save(entity);
 	}
 
 	@Override
-	public Story update(Story entity) {
+	public Integer update(Story entity) {
 	
 		return storyDAO.update(entity);
 	}

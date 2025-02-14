@@ -38,30 +38,31 @@ public class Main {
 	private final static Logger logger = LogManager.getLogger(Main.class.getName());
 
 	public static void main(String[] args) {
-
+		
 		LocalDate userDate = LocalDate.of(1990, 05, 15);
-		User userJohn = new User("john_doe","john.doe@example.com","password123","John","Doe",userDate);
+		//User userJohn = new User("john_doe","john.doe@example.com","password123","John","Doe",userDate);
 		UserService userService = new UserService();
-		User updatedJohn = new User((long)8,"Adam_doe","Adam.doe@example.com","password123","Adam","Doe",userDate);
-       	userJohn = userService.save(userJohn);
+		User updatedJohn = new User((long)29,"Adam_doe","Adam.doe@example.com","password123","Adam","Doe",userDate);
+       	//userJohn = userService.save(userJohn);
+
+       //	List<User> withNameJohn = userService.getByFirstName("John");
+       	//List<User> withNameAdam = userService.getByFirstName("Adam");
        	
-       	List<User> withNameJohn = userService.getByFirstName("John");
-       	List<User> withNameAdam = userService.getByFirstName("Adam");
-       	
-       	for (User john: withNameJohn) {
+       	/*for (User john: withNameJohn) {
        	logger.info("Users from db with name John: {}", john.toString());
-       	}
+       	}*/
        	
        	userService.update(updatedJohn);
-       	userService.removeById((long) 6);
-       	for (User john: withNameJohn) {
+       	userService.removeById((long) 31);
+		userService.removeById((long) 33);
+       	/*for (User john: withNameJohn) {
            	logger.info("Users from db with name John after changes : {}", john.toString());
-           	}
-     	for (User adam: withNameAdam) {
+           	}*/
+     	/*for (User adam: withNameAdam) {
            	logger.info("Users from db with name Adam after changes : {}", adam.toString());
-           	}
+           	}*/
 
-		// SAX Parser
+		/*// SAX Parser
     	logger.info("SAX parser value: ");
 		List<User> parsedUsers = new ArrayList<>();
 		List<Post> parsedPosts = new ArrayList<>();
@@ -179,7 +180,7 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        
+        */
         
 
 	}

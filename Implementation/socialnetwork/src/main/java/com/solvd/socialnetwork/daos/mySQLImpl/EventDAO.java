@@ -126,7 +126,7 @@ public class EventDAO  extends AbstractMySQLDAO<Event> implements IEventDAO {
 	}
 
 	@Override
-	public Event save(Event entity) {
+	public Integer save(Event entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -152,11 +152,11 @@ public class EventDAO  extends AbstractMySQLDAO<Event> implements IEventDAO {
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override
-	public Event update(Event entity) {
+	public Integer update(Event entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -176,7 +176,7 @@ public class EventDAO  extends AbstractMySQLDAO<Event> implements IEventDAO {
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override

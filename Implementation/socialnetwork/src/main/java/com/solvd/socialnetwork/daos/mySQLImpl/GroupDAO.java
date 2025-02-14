@@ -68,7 +68,7 @@ public class GroupDAO extends AbstractMySQLDAO<Group> implements IGroupDAO {
 	}
 
 	@Override
-	public Group save(Group entity) {
+	public Integer save(Group entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -92,11 +92,11 @@ public class GroupDAO extends AbstractMySQLDAO<Group> implements IGroupDAO {
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override
-	public Group update(Group entity) {
+	public Integer update(Group entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -115,7 +115,7 @@ public class GroupDAO extends AbstractMySQLDAO<Group> implements IGroupDAO {
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override

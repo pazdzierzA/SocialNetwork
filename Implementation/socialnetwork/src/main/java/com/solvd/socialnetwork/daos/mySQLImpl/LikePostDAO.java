@@ -43,7 +43,7 @@ public class LikePostDAO extends AbstractMySQLDAO<LikePost> implements ILikePost
 	}
 
 	@Override
-	public LikePost save(LikePost entity) {
+	public Integer save(LikePost entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -66,11 +66,11 @@ public class LikePostDAO extends AbstractMySQLDAO<LikePost> implements ILikePost
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override
-	public LikePost update(LikePost entity) {
+	public Integer update(LikePost entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -87,7 +87,7 @@ public class LikePostDAO extends AbstractMySQLDAO<LikePost> implements ILikePost
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 	@Override
 	public void removeById(Long id) {

@@ -17,12 +17,12 @@ public class FriendshipService implements IFriendshipService {
 	}
 
 	@Override
-	public Friendship save(Friendship entity) {
+	public Integer save(Friendship entity) {
 		return friendshipDAO.save(entity);
 	}
 
 	@Override
-	public Friendship update(Friendship entity) {
+	public Integer update(Friendship entity) {
 		return friendshipDAO.update(entity);
 	}
 

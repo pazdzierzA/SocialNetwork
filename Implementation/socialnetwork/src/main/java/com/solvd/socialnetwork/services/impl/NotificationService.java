@@ -16,12 +16,12 @@ public class NotificationService implements INotificationService {
 	}
 
 	@Override
-	public Notification save(Notification entity) {
+	public Integer save(Notification entity) {
 		return notificationDAO.save(entity);
 	}
 
 	@Override
-	public Notification update(Notification entity) {
+	public Integer update(Notification entity) {
 		return notificationDAO.update(entity);
 	}
 

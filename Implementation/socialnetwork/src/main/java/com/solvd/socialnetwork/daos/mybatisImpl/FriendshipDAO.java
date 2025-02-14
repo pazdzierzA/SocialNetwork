@@ -21,7 +21,7 @@ public class FriendshipDAO implements IFriendshipDAO{
     }
 
     @Override
-    public Friendship save(Friendship entity) {
+    public Integer save(Friendship entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IFriendshipDAO friendshipDao = session.getMapper(IFriendshipDAO.class);
             return friendshipDao.save(entity);
@@ -29,7 +29,7 @@ public class FriendshipDAO implements IFriendshipDAO{
     }
 
     @Override
-    public Friendship update(Friendship entity) {
+    public Integer update(Friendship entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IFriendshipDAO friendshipDao = session.getMapper(IFriendshipDAO.class);
             return friendshipDao.update(entity);

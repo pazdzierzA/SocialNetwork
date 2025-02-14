@@ -98,7 +98,7 @@ public class CommentDAO extends AbstractMySQLDAO<Comment> implements ICommentDAO
 	}
 
 	@Override
-	public Comment save(Comment entity) {
+	public Integer save(Comment entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -122,11 +122,11 @@ public class CommentDAO extends AbstractMySQLDAO<Comment> implements ICommentDAO
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override
-	public Comment update(Comment entity) {
+	public Integer update(Comment entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -145,7 +145,7 @@ public class CommentDAO extends AbstractMySQLDAO<Comment> implements ICommentDAO
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override

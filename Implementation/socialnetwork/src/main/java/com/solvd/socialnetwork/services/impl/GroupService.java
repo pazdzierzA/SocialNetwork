@@ -16,12 +16,12 @@ public class GroupService implements IGroupService {
 	}
 
 	@Override
-	public Group save(Group entity) {
+	public Integer save(Group entity) {
 		return groupDAO.save(entity);
 	}
 
 	@Override
-	public Group update(Group entity) {
+	public Integer update(Group entity) {
 		return groupDAO.update(entity);
 	}
 

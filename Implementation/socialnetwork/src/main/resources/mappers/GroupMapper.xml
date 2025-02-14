@@ -1,3 +1,7 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.solvd.socialnetwork.daos.IGroupDAO">
     <resultMap id="GroupResultMap" type="com.solvd.socialnetwork.models.Group" autoMapping="false">
         <id column="ID" property="id"/>
@@ -8,25 +12,25 @@
     </resultMap>
 
     <select id="getById" resultMap="GroupResultMap">
-        SELECT * FROM GROUPS WHERE ID = #{id}
+        SELECT * FROM Groups WHERE ID = #{id}
     </select>
 
     <select id="getByGroupName" resultMap="GroupResultMap">
-        SELECT * FROM GROUPS WHERE GROUP_NAME = #{groupName}
+        SELECT * FROM Groups WHERE GROUP_NAME = #{groupName}
     </select>
 
     <insert id="save" parameterType="com.solvd.socialnetwork.models.Group" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO GROUPS (GROUP_NAME, GROUP_TYPE, GROUP_CREATOR_ID)
+        INSERT INTO Groups (GROUP_NAME, GROUP_TYPE, GROUP_CREATOR_ID)
         VALUES (#{groupName}, #{groupType}, #{groupCreatorId})
     </insert>
 
     <update id="update" parameterType="com.solvd.socialnetwork.models.Group">
-        UPDATE GROUPS 
+        UPDATE Groups 
         SET GROUP_NAME = #{groupName}, GROUP_TYPE = #{groupType}, GROUP_CREATOR_ID = #{groupCreatorId}
         WHERE ID = #{id}
     </update>
 
     <delete id="delete" parameterType="com.solvd.socialnetwork.models.Group">
-        DELETE FROM GROUPS WHERE ID = #{id}
+        DELETE FROM Groups WHERE ID = #{id}
     </delete>
 </mapper>

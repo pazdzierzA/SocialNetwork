@@ -19,7 +19,7 @@ public class SavedPostDAO implements ISavedPostDAO{
     }
 
     @Override
-    public SavedPost save(SavedPost entity) {
+    public Integer save(SavedPost entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             ISavedPostDAO savedPostDao = session.getMapper(ISavedPostDAO.class);
             return savedPostDao.save(entity);
@@ -27,7 +27,7 @@ public class SavedPostDAO implements ISavedPostDAO{
     }
 
     @Override
-    public SavedPost update(SavedPost entity) {
+    public Integer update(SavedPost entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             ISavedPostDAO savedPostDao = session.getMapper(ISavedPostDAO.class);
             return savedPostDao.update(entity);

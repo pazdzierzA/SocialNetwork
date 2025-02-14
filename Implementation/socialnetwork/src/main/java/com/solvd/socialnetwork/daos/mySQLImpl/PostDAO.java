@@ -42,7 +42,7 @@ public class PostDAO extends AbstractMySQLDAO<Post> implements IPostDAO{
 		return post;
 	}
 	@Override
-	public Post save(Post entity) {
+	public Integer save(Post entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -68,10 +68,10 @@ public class PostDAO extends AbstractMySQLDAO<Post> implements IPostDAO{
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 	@Override
-	public Post update(Post entity) {
+	public Integer update(Post entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -92,7 +92,7 @@ public class PostDAO extends AbstractMySQLDAO<Post> implements IPostDAO{
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 	@Override
 	public void removeById(Long id) {

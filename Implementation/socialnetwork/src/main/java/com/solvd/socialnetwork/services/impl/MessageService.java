@@ -17,12 +17,12 @@ public class MessageService implements IMessageService {
 	}
 
 	@Override
-	public Message save(Message entity) {
+	public Integer save(Message entity) {
 		return messageDAO.save(entity);
 	}
 
 	@Override
-	public Message update(Message entity) {
+	public Integer update(Message entity) {
 
 		return messageDAO.update(entity);
 	}

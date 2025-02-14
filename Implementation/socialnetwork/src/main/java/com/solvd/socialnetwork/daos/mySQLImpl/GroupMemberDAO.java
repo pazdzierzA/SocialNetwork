@@ -49,7 +49,7 @@ public class GroupMemberDAO extends AbstractMySQLDAO<GroupMember> implements IGr
 	}
 
 	@Override
-	public GroupMember save(GroupMember entity) {
+	public Integer save(GroupMember entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -73,11 +73,11 @@ public class GroupMemberDAO extends AbstractMySQLDAO<GroupMember> implements IGr
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override
-	public GroupMember update(GroupMember entity) {
+	public Integer update(GroupMember entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -96,7 +96,7 @@ public class GroupMemberDAO extends AbstractMySQLDAO<GroupMember> implements IGr
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override

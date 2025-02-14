@@ -16,12 +16,12 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public User save(User entity) {
+	public Integer save(User entity) {
 		return userDAO.save(entity);
 	}
 
 	@Override
-	public User update(User entity) {
+	public Integer update(User entity) {
 		return userDAO.update(entity);
 	}
 

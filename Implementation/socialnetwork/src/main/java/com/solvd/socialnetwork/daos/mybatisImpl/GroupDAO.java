@@ -19,7 +19,7 @@ public class GroupDAO implements IGroupDAO{
     }
 
     @Override
-    public Group save(Group entity) {
+    public Integer save(Group entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IGroupDAO groupDao = session.getMapper(IGroupDAO.class);
             return groupDao.save(entity);
@@ -28,7 +28,7 @@ public class GroupDAO implements IGroupDAO{
     }
 
     @Override
-    public Group update(Group entity) {
+    public Integer update(Group entity) {
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IGroupDAO groupDao = session.getMapper(IGroupDAO.class);
             return groupDao.update(entity);

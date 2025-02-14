@@ -45,7 +45,7 @@ public class SavedPostDAO extends AbstractMySQLDAO<SavedPost> implements ISavedP
 	}
 
 	@Override
-	public SavedPost save(SavedPost entity) {
+	public Integer save(SavedPost entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -68,11 +68,11 @@ public class SavedPostDAO extends AbstractMySQLDAO<SavedPost> implements ISavedP
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override
-	public SavedPost update(SavedPost entity) {
+	public Integer update(SavedPost entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -90,7 +90,7 @@ public class SavedPostDAO extends AbstractMySQLDAO<SavedPost> implements ISavedP
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override

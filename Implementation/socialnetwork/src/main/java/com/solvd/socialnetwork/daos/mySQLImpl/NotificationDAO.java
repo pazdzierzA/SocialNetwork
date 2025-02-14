@@ -47,7 +47,7 @@ public class NotificationDAO extends AbstractMySQLDAO<Notification> implements I
 	}
 
 	@Override
-	public Notification save(Notification entity) {
+	public Integer save(Notification entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -71,11 +71,11 @@ public class NotificationDAO extends AbstractMySQLDAO<Notification> implements I
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override
-	public Notification update(Notification entity) {
+	public Integer update(Notification entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -94,7 +94,7 @@ public class NotificationDAO extends AbstractMySQLDAO<Notification> implements I
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override

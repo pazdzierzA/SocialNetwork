@@ -48,7 +48,7 @@ public class EventParticipantDAO extends AbstractMySQLDAO<EventParticipant>imple
 	} 
 
 	@Override
-	public EventParticipant save(EventParticipant entity) {
+	public Integer save(EventParticipant entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -72,11 +72,11 @@ public class EventParticipantDAO extends AbstractMySQLDAO<EventParticipant>imple
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override
-	public EventParticipant update(EventParticipant entity) {
+	public Integer update(EventParticipant entity) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().getConnection();
@@ -95,7 +95,7 @@ public class EventParticipantDAO extends AbstractMySQLDAO<EventParticipant>imple
 		} finally {
 			ConnectionPool.getInstance().releaseConnection(connection);
 		}
-		return entity;
+		return entity.getId().intValue();
 	}
 
 	@Override

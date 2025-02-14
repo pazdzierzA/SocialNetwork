@@ -13,7 +13,7 @@ public class ConnectionFactory {
     static {
         try {
             Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
-            sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader,"Stag");
         } catch (IOException e) {
             throw new RuntimeException("mybatis-config.xml file not found.", e);
         }

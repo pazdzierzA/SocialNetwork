@@ -16,12 +16,12 @@ public class SavedPostService implements ISavedPostService {
 	}
 
 	@Override
-	public SavedPost save(SavedPost entity) {
+	public Integer save(SavedPost entity) {
 		return savedPostDAO.save(entity);
 	}
 
 	@Override
-	public SavedPost update(SavedPost entity) {
+	public Integer update(SavedPost entity) {
 
 		return savedPostDAO.update(entity);
 	}
