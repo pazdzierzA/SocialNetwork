@@ -30,7 +30,7 @@ public class Story extends BaseEntity {
 
 	}
 
-	/*public String getText() {
+	public String getText() {
 		return text;
 	}
 
@@ -58,6 +58,6 @@ public class Story extends BaseEntity {
 	public String toString() {
 		return "Story [text=" + text + ", pictureStoryUrl=" + pictureStoryUrl + ", storyCreatorId=" + storyCreatorId
 				+ "]";
-	}*/
+	}
 
 }

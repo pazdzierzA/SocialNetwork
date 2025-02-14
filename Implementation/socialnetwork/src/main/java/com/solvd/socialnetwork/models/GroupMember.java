@@ -2,6 +2,14 @@ package com.solvd.socialnetwork.models;
 
 import com.solvd.socialnetwork.enums.UserRole;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@Builder
+@EqualsAndHashCode(callSuper = true)
+
 public class GroupMember extends BaseEntity {
 	private UserRole userRole;
 	private Long groupId;
@@ -15,6 +23,15 @@ public class GroupMember extends BaseEntity {
 	}
 
 	public GroupMember() {
+	}
+
+	public GroupMember(UserRole userRole) {
+		this.userRole = userRole;
+	}
+	public GroupMember(UserRole userRole, Long groupId, Long userId) {
+		this.userRole = userRole;
+		this.groupId = groupId;
+		this.userId = userId;
 	}
 
 	public UserRole getUserRole() {
@@ -45,6 +62,7 @@ public class GroupMember extends BaseEntity {
 	public String toString() {
 		return "GroupMember [userRole=" + userRole + ", groupId=" + groupId + ", userId=" + userId + "]";
 	}
+
 	
 	
 

@@ -23,6 +23,7 @@ public class EventDAO implements IEventDAO{
         try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
             IEventDAO eventDao = session.getMapper(IEventDAO.class);
             return eventDao.save(entity);
+            
         }
     }
 
