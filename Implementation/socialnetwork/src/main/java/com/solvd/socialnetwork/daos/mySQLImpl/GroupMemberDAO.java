@@ -15,7 +15,7 @@ import com.solvd.socialnetwork.daos.IGroupMemberDAO;
 import com.solvd.socialnetwork.enums.UserRole;
 import com.solvd.socialnetwork.models.GroupMember;
 import com.solvd.socialnetwork.models.User;
-import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
+import com.solvd.socialnetwork.utils.connectionpools.ConnectionPool;
 
 public class GroupMemberDAO extends AbstractMySQLDAO<GroupMember> implements IGroupMemberDAO {
 	private final static Logger logger = LogManager.getLogger(GroupMemberDAO.class.getName());

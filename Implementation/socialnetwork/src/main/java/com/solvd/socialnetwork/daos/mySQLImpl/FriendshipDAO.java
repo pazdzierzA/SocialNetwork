@@ -15,7 +15,7 @@ import com.solvd.socialnetwork.daos.IFriendshipDAO;
 import com.solvd.socialnetwork.enums.FriendshipStatus;
 import com.solvd.socialnetwork.enums.FriendshipType;
 import com.solvd.socialnetwork.models.Friendship;
-import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
+import com.solvd.socialnetwork.utils.connectionpools.ConnectionPool;
 
 public class FriendshipDAO extends AbstractMySQLDAO<Friendship> implements IFriendshipDAO {
 	private final static Logger logger = LogManager.getLogger(FriendshipDAO.class.getName());

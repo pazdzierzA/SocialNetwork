@@ -3,88 +3,87 @@ package com.solvd.socialnetwork.daos.mybatisImpl;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
 import com.solvd.socialnetwork.daos.IUserDAO;
 import com.solvd.socialnetwork.models.User;
-import com.solvd.socialnetwork.services.mybatisconfigs.ConnectionFactory;
 
-public class UserDAO implements IUserDAO {
+public class UserDAO extends AbstractMyBatisDAO implements IUserDAO {
+    private IUserDAO userDAO;
 
     @Override
     public User getById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-           
-            IUserDAO userDao = session.getMapper(IUserDAO.class);
-            return userDao.getById(id);
-        }
+        return execute(session -> {
+            userDAO = getMapper(IUserDAO.class, session);
+            return userDAO.getById(id);
+        });
+
     }
 
     @Override
     public Integer save(User entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IUserDAO userDao = session.getMapper(IUserDAO.class);
-            return userDao.save(entity);
-        }
-      
+        return execute(session -> {
+            userDAO = getMapper(IUserDAO.class, session);
+            return userDAO.save(entity);
+        });
+
     }
 
     @Override
     public Integer update(User entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IUserDAO userDao = session.getMapper(IUserDAO.class);
-            return userDao.update(entity);
-        }
-       
+        return execute(session -> {
+            userDAO = getMapper(IUserDAO.class, session);
+            return userDAO.update(entity);
+        });
+
     }
 
     @Override
     public void removeById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IUserDAO userDao = session.getMapper(IUserDAO.class);
-            userDao.removeById(id);
-        }
+        executeVoid(session -> {
+            userDAO = getMapper(IUserDAO.class, session);
+            userDAO.removeById(id);
+        });
 
     }
 
     @Override
     public User getByLogin(String login) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IUserDAO userDao = session.getMapper(IUserDAO.class);
-            return userDao.getByLogin(login);
-        }
+        return execute(session -> {
+            userDAO = getMapper(IUserDAO.class, session);
+            return userDAO.getByLogin(login);
+        });
     }
 
     @Override
     public User getByEmail(String email) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IUserDAO userDao = session.getMapper(IUserDAO.class);
-            return userDao.getByEmail(email);
-        }
+        return execute(session -> {
+            userDAO = getMapper(IUserDAO.class, session);
+            return userDAO.getByEmail(email);
+        });
     }
 
     @Override
     public List<User> getByFirstName(String firstName) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IUserDAO userDao = session.getMapper(IUserDAO.class);
-            return userDao.getByFirstName(firstName);
-        }
+        return execute(session -> {
+            userDAO = getMapper(IUserDAO.class, session);
+            return userDAO.getByFirstName(firstName);
+        });
     }
 
     @Override
     public List<User> getByLastName(String lastName) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IUserDAO userDao = session.getMapper(IUserDAO.class);
-            return userDao.getByLastName(lastName);
-        }
+        return execute(session -> {
+            userDAO = getMapper(IUserDAO.class, session);
+            return userDAO.getByLastName(lastName);
+        });
 
     }
 
     @Override
     public List<User> getByBirthDate(LocalDate birthDate) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IUserDAO userDao = session.getMapper(IUserDAO.class);
-            return userDao.getByBirthDate(birthDate);
-        }
+        return execute(session -> {
+            userDAO = getMapper(IUserDAO.class, session);
+            return userDAO.getByBirthDate(birthDate);
+        });
 
     }
 }

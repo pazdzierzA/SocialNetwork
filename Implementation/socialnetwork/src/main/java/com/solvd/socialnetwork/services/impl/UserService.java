@@ -4,12 +4,17 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IUserDAO;
-import com.solvd.socialnetwork.daos.mybatisImpl.UserDAO;
 import com.solvd.socialnetwork.models.User;
 import com.solvd.socialnetwork.services.IUserService;
 
-public class UserService implements IUserService {
-	private IUserDAO userDAO =new UserDAO();
+public class UserService extends BaseService implements IUserService {
+	private IUserDAO userDAO;
+
+	public UserService() {
+		super();
+		this.userDAO = daoFactory.getUserDAO();
+	}
+
 	@Override
 	public User getById(Long id) {
 		return userDAO.getById(id);

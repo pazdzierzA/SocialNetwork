@@ -3,12 +3,16 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.ICommentDAO;
-import com.solvd.socialnetwork.daos.mybatisImpl.CommentDAO;
 import com.solvd.socialnetwork.models.Comment;
 import com.solvd.socialnetwork.services.ICommentService;
 
-public class CommentService implements ICommentService {
-	private ICommentDAO commentDAO = new CommentDAO();
+public class CommentService extends BaseService implements ICommentService {
+	private ICommentDAO commentDAO;
+
+	public CommentService() {
+		super();
+		this.commentDAO = daoFactory.getCommentDAO();
+	}
 	@Override
 	public List<Comment> getCommentByAuthorId(Long id) {
 		return commentDAO.getByAuthorId(id);

@@ -2,66 +2,64 @@ package com.solvd.socialnetwork.daos.mybatisImpl;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.solvd.socialnetwork.daos.IGroupMemberDAO;
 import com.solvd.socialnetwork.enums.UserRole;
 import com.solvd.socialnetwork.models.GroupMember;
 import com.solvd.socialnetwork.models.User;
-import com.solvd.socialnetwork.services.mybatisconfigs.ConnectionFactory;
 
-public class GroupMemberDAO implements IGroupMemberDAO {
+public class GroupMemberDAO extends AbstractMyBatisDAO implements IGroupMemberDAO {
+    private IGroupMemberDAO groupMemberDAO;
 
     @Override
     public GroupMember getById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IGroupMemberDAO groupMemberDao = session.getMapper(IGroupMemberDAO.class);
-            return groupMemberDao.getById(id);
-        }
+        return execute(session -> {
+            groupMemberDAO = getMapper(IGroupMemberDAO.class, session);
+            return groupMemberDAO.getById(id);
+        });
 
     }
 
     @Override
     public Integer save(GroupMember entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IGroupMemberDAO groupMemberDao = session.getMapper(IGroupMemberDAO.class);
-            return groupMemberDao.save(entity);
-        }
-  
+        return execute(session -> {
+            groupMemberDAO = getMapper(IGroupMemberDAO.class, session);
+            return groupMemberDAO.save(entity);
+        });
+
     }
 
     @Override
     public Integer update(GroupMember entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IGroupMemberDAO groupMemberDao = session.getMapper(IGroupMemberDAO.class);
-            return groupMemberDao.update(entity);
-        }
+        return execute(session -> {
+            groupMemberDAO = getMapper(IGroupMemberDAO.class, session);
+            return groupMemberDAO.update(entity);
+        });
 
     }
 
     @Override
     public void removeById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IGroupMemberDAO groupMemberDao = session.getMapper(IGroupMemberDAO.class);
-            groupMemberDao.removeById(id);
-        }
+        executeVoid(session -> {
+            groupMemberDAO = getMapper(IGroupMemberDAO.class, session);
+            groupMemberDAO.removeById(id);
+        });
 
     }
 
     @Override
     public List<GroupMember> getByUserRole(UserRole userRole) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IGroupMemberDAO groupMemberDao = session.getMapper(IGroupMemberDAO.class);
-            return groupMemberDao.getByUserRole(userRole);
-        }
+        return execute(session -> {
+            groupMemberDAO = getMapper(IGroupMemberDAO.class, session);
+            return groupMemberDAO.getByUserRole(userRole);
+        });
     }
 
     @Override
     public List<User> getUsersByGroupId(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IGroupMemberDAO groupMemberDao = session.getMapper(IGroupMemberDAO.class);
-            return groupMemberDao.getUsersByGroupId(id);
-        }
+        return execute(session -> {
+            groupMemberDAO = getMapper(IGroupMemberDAO.class, session);
+            return groupMemberDAO.getUsersByGroupId(id);
+        });
     }
 
 }

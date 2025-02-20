@@ -3,12 +3,16 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.ISavedPostDAO;
-import com.solvd.socialnetwork.daos.mybatisImpl.SavedPostDAO;
 import com.solvd.socialnetwork.models.SavedPost;
 import com.solvd.socialnetwork.services.ISavedPostService;
 
-public class SavedPostService implements ISavedPostService {
-	private ISavedPostDAO savedPostDAO = new SavedPostDAO();
+public class SavedPostService extends BaseService implements ISavedPostService {
+	private ISavedPostDAO savedPostDAO;
+
+	public SavedPostService() {
+		super();
+		this.savedPostDAO = daoFactory.getSavedPostDAO();
+	}
 
 	@Override
 	public SavedPost getById(Long id) {

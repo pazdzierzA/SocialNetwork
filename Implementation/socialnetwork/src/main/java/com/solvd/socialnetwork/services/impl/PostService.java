@@ -1,13 +1,16 @@
 package com.solvd.socialnetwork.services.impl;
 
 import com.solvd.socialnetwork.daos.IPostDAO;
-import com.solvd.socialnetwork.daos.mybatisImpl.PostDAO;
 import com.solvd.socialnetwork.models.Post;
 import com.solvd.socialnetwork.services.IPostService;
 
-public class PostService implements IPostService {
-	private IPostDAO postDAO = new PostDAO();
-
+public class PostService extends BaseService implements IPostService {
+	private IPostDAO postDAO;
+	
+	public PostService() {
+		super();
+		this.postDAO = daoFactory.getPostDAO();
+	}
 	@Override
 	public Post getById(Long id) {
 		return postDAO.getById(id);

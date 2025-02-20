@@ -2,52 +2,49 @@ package com.solvd.socialnetwork.daos.mybatisImpl;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.solvd.socialnetwork.daos.ISavedPostDAO;
 import com.solvd.socialnetwork.models.SavedPost;
-import com.solvd.socialnetwork.services.mybatisconfigs.ConnectionFactory;
 
-public class SavedPostDAO implements ISavedPostDAO{
-
+public class SavedPostDAO extends AbstractMyBatisDAO implements ISavedPostDAO{
+    private ISavedPostDAO savedPostDAO;
     @Override
     public SavedPost getById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ISavedPostDAO savedPostDao = session.getMapper(ISavedPostDAO.class);
-            return savedPostDao.getById(id);
-        }
+        return execute(session -> {
+            savedPostDAO = getMapper(ISavedPostDAO.class, session);
+            return savedPostDAO.getById(id);
+        });
     }
 
     @Override
     public Integer save(SavedPost entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ISavedPostDAO savedPostDao = session.getMapper(ISavedPostDAO.class);
-            return savedPostDao.save(entity);
-        }
+        return execute(session -> {
+            savedPostDAO = getMapper(ISavedPostDAO.class, session);
+            return savedPostDAO.save(entity);
+        });
     }
 
     @Override
     public Integer update(SavedPost entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ISavedPostDAO savedPostDao = session.getMapper(ISavedPostDAO.class);
-            return savedPostDao.update(entity);
-        }
+        return execute(session -> {
+            savedPostDAO = getMapper(ISavedPostDAO.class, session);
+            return savedPostDAO.update(entity);
+        });
     }
 
     @Override
     public void removeById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ISavedPostDAO savedPostDao = session.getMapper(ISavedPostDAO.class);
-            savedPostDao.removeById(id);
-        }
+        executeVoid(session -> {
+            savedPostDAO = getMapper(ISavedPostDAO.class, session);
+            savedPostDAO.removeById(id);
+        });
         
     }
 
     @Override
     public List<SavedPost> getByUserId(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ISavedPostDAO savedPostDao = session.getMapper(ISavedPostDAO.class);
-            return savedPostDao.getByUserId(id);
-        }
+        return execute(session -> {
+            savedPostDAO = getMapper(ISavedPostDAO.class, session);
+            return savedPostDAO.getByUserId(id);
+        });
     }
 }

@@ -3,12 +3,16 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IEventDAO;
-import com.solvd.socialnetwork.daos.mybatisImpl.EventDAO;
 import com.solvd.socialnetwork.models.Event;
 import com.solvd.socialnetwork.services.IEventService;
 
-public class EventService implements IEventService {
-	private IEventDAO eventDAO = new EventDAO();
+public class EventService extends BaseService implements IEventService {
+	private IEventDAO eventDAO;
+
+	public EventService() {
+		super();
+		eventDAO = daoFactory.getEventDAO();
+	}
 
 	@Override
 	public Event getById(Long id) {

@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.solvd.socialnetwork.daos.IMessageDAO;
 import com.solvd.socialnetwork.models.Message;
-import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
+import com.solvd.socialnetwork.utils.connectionpools.ConnectionPool;
 
 public class MessageDAO extends AbstractMySQLDAO<Message> implements IMessageDAO{
 	private final static Logger logger = LogManager.getLogger(MessageDAO.class.getName());

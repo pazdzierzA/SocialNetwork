@@ -3,13 +3,17 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.INotificationDAO;
-import com.solvd.socialnetwork.daos.mybatisImpl.NotificationDAO;
 import com.solvd.socialnetwork.enums.NotificationType;
 import com.solvd.socialnetwork.models.Notification;
 import com.solvd.socialnetwork.services.INotificationService;
 
-public class NotificationService implements INotificationService {
-	private INotificationDAO notificationDAO = new NotificationDAO();
+public class NotificationService extends BaseService implements INotificationService {
+	private INotificationDAO notificationDAO;
+
+	public NotificationService() {
+		super();
+		this.notificationDAO = daoFactory.getNotificationDAO();
+	}
 	@Override
 	public Notification getById(Long id) {
 		return notificationDAO.getById(id);

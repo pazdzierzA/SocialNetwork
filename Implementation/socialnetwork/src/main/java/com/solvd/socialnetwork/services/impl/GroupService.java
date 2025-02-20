@@ -3,12 +3,16 @@ package com.solvd.socialnetwork.services.impl;
 import java.util.List;
 
 import com.solvd.socialnetwork.daos.IGroupDAO;
-import com.solvd.socialnetwork.daos.mybatisImpl.GroupDAO;
 import com.solvd.socialnetwork.models.Group;
 import com.solvd.socialnetwork.services.IGroupService;
 
-public class GroupService implements IGroupService {
-	private IGroupDAO groupDAO = new GroupDAO();
+public class GroupService extends BaseService implements IGroupService {
+	private IGroupDAO groupDAO;
+
+	public GroupService() {
+		super();
+		this.groupDAO = daoFactory.getGroupDAO();
+	}
 
 	@Override
 	public Group getById(Long id) {

@@ -14,6 +14,10 @@ public class SavedPost extends BaseEntity{
 	public SavedPost() {
 
 	}
+	public SavedPost(Long postId, Long userId) {
+		this.postId = postId;
+		this.userId = userId;
+	}
 
 	public Long getPostId() {
 		return postId;

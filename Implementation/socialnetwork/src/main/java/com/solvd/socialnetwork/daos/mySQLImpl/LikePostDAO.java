@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.solvd.socialnetwork.daos.ILikePostDAO;
 import com.solvd.socialnetwork.models.LikePost;
-import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
+import com.solvd.socialnetwork.utils.connectionpools.ConnectionPool;
 
 public class LikePostDAO extends AbstractMySQLDAO<LikePost> implements ILikePostDAO {
 	private final static Logger logger = LogManager.getLogger(LikePostDAO.class.getName());

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.solvd.socialnetwork.builders.UserBuilder;
 
 public class User extends BaseEntity {
 
@@ -106,43 +107,6 @@ public class User extends BaseEntity {
 	public String toString() {
 		return "User [login=" + login + ", email=" + email + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", birthDate=" + birthDate +  "]";
-	}
-
-	public static class UserBuilder{
-		private final User user;
-
-		public UserBuilder(User user) {
-			this.user = user;
-		}
-		public UserBuilder login(String login) {
-			this.user.setLogin(login);
-			return this;
-		}	
-
-		public UserBuilder email(String email) {
-			this.user.setEmail(email);
-			return this;
-		}
-		public UserBuilder password(String password) {
-			this.user.setPassword(password);
-			return this;
-		}
-		public UserBuilder firstName(String firstName) {
-			this.user.setFirstName(firstName);
-			return this;
-		}
-		public UserBuilder lastName(String lastName) {
-			this.user.setLastName(lastName);
-			return this;
-		}
-		public UserBuilder birthDate(LocalDate birthDate) {
-			this.user.setBirthDate(birthDate);
-			return this;
-		}
-		public User build() {
-			return this.user;
-		}
-
 	}
 
 }

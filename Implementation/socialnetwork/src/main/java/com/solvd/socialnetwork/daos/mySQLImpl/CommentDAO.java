@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.solvd.socialnetwork.daos.ICommentDAO;
 import com.solvd.socialnetwork.models.Comment;
-import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
+import com.solvd.socialnetwork.utils.connectionpools.ConnectionPool;
 
 public class CommentDAO extends AbstractMySQLDAO<Comment> implements ICommentDAO {
 	private final static Logger logger = LogManager.getLogger(CommentDAO.class.getName());

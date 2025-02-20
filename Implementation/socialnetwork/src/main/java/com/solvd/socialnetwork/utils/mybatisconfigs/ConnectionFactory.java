@@ -1,4 +1,4 @@
-package com.solvd.socialnetwork.services.mybatisconfigs;
+package com.solvd.socialnetwork.utils.mybatisconfigs;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;

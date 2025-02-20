@@ -1,12 +1,17 @@
 package com.solvd.socialnetwork.services.impl;
 
-import com.solvd.socialnetwork.daos.mybatisImpl.LikePostDAO;
+
 import com.solvd.socialnetwork.daos.ILikePostDAO;
 import com.solvd.socialnetwork.models.LikePost;
 import com.solvd.socialnetwork.services.ILikeService;
 
-public class LikeService implements ILikeService {
-	private ILikePostDAO likeDAO = new LikePostDAO();
+public class LikeService extends BaseService implements ILikeService {
+	private ILikePostDAO likeDAO;
+
+	public LikeService() {
+		super();
+		this.likeDAO = daoFactory.getLikePostDAO();
+	}
 	@Override
 	public LikePost getById(Long id) {
 		return likeDAO.getById(id);

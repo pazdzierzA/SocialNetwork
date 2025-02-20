@@ -1,19 +1,40 @@
-package com.solvd.socialnetwork.services.connectionpools;
+package com.solvd.socialnetwork.utils.connectionpools;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import com.solvd.socialnetwork.utils.Implementation;
 
-public class ConnectionPool {
+public class ConnectionPool extends Implementation {
 	private final static Logger logger = LogManager.getLogger(ConnectionPool.class.getName());
-	private static final String JDBC_URL = "jdbc:mysql://34.205.43.78:3306/social_networks";
-	private static final String USERNAME = "root";
-	private static final String PASSWORD = "devintern";
+	private static final String PROPERTIES_FILE = "_database.properties";
+	private static final String JDBC_URL;
+	private static final String USERNAME;
+	private static final String PASSWORD;
+
+	static {
+		String tempUrl = null;
+		String tempUserName = null;
+		String tempPassword = null;
+		try {
+			tempUrl = Objects.requireNonNull(loadImplementation(PROPERTIES_FILE).getProperty("db.url"));
+			tempUserName = Objects.requireNonNull(loadImplementation(PROPERTIES_FILE).getProperty("db.username"));
+			tempPassword = Objects.requireNonNull(loadImplementation(PROPERTIES_FILE).getProperty("db.password"));
+		} catch (IOException e) {
+			logger.error("Error loading database properties from properties file", e);
+		}
+		JDBC_URL = tempUrl;
+		USERNAME = tempUserName;
+		PASSWORD = tempPassword;
+	}
+
 	private BlockingQueue<Connection> connections;
 	private static Integer size = 10;
 	private static ConnectionPool INSTANCE = null;

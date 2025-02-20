@@ -12,12 +12,12 @@ import com.solvd.socialnetwork.models.GroupMember;
 
 import com.solvd.socialnetwork.models.Story;
 import com.solvd.socialnetwork.models.User;
+import com.solvd.socialnetwork.services.impl.CommentService;
 import com.solvd.socialnetwork.services.impl.StoryService;
 import com.solvd.socialnetwork.services.impl.UserService;
-
-
 import com.solvd.socialnetwork.enums.UserRole;
 import com.solvd.socialnetwork.factories.GroupMemberFactory;
+
 
 
 public class Main {
@@ -33,9 +33,13 @@ public class Main {
 		// lombok builder
 		Story firstStory = Story.builder().text("This is my first story").pictureStoryUrl("url").storyCreatorId(1L).build();
 		
-		// service pattern
+		// service pattern with factory pattern
 		StoryService storyService = new StoryService();
 		storyService.save(firstStory);
+		
+
+		CommentService commentService = new CommentService();
+		commentService.getById((long) 1);
 
 		// factory pattern
 		GroupMember admin = GroupMemberFactory.createGroupMember(UserRole.ADMIN);

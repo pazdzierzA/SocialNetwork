@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.solvd.socialnetwork.daos.IPostDAO;
 import com.solvd.socialnetwork.models.Post;
-import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
+import com.solvd.socialnetwork.utils.connectionpools.ConnectionPool;
 
 public class PostDAO extends AbstractMySQLDAO<Post> implements IPostDAO{
 	private final static Logger logger = LogManager.getLogger(PostDAO.class.getName());

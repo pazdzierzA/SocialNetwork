@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.solvd.socialnetwork.daos.IUserDAO;
 import com.solvd.socialnetwork.models.User;
-import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
+import com.solvd.socialnetwork.utils.connectionpools.ConnectionPool;
 
 public class UserDAO extends AbstractMySQLDAO<User> implements IUserDAO{
 	private final static Logger logger = LogManager.getLogger(UserDAO.class.getName());

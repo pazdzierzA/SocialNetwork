@@ -1,61 +1,59 @@
 package com.solvd.socialnetwork.daos.mybatisImpl;
 
-
-import java.util.List;
-import org.apache.ibatis.session.SqlSession;
-
+import java.util.List;                       
 import com.solvd.socialnetwork.daos.ICommentDAO;
 import com.solvd.socialnetwork.models.Comment;
-import com.solvd.socialnetwork.services.mybatisconfigs.ConnectionFactory;
 
-public class CommentDAO implements ICommentDAO {
+public class CommentDAO extends AbstractMyBatisDAO implements ICommentDAO {
+    private ICommentDAO commentDAO;
 
     @Override
     public Comment getById(Long id) {
-       try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-           ICommentDAO commentDao = session.getMapper(ICommentDAO.class);
-           return commentDao.getById(id);
-       }
+        return execute(session -> {
+            commentDAO = getMapper(ICommentDAO.class, session);
+            return commentDAO.getById(id);
+        });
     }
 
     @Override
     public Integer save(Comment entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ICommentDAO commentDao = session.getMapper(ICommentDAO.class);
-            return commentDao.save(entity);
-        }
+        return execute(session -> {
+            commentDAO = getMapper(ICommentDAO.class, session);
+            return commentDAO.save(entity);
+        });
     }
 
     @Override
     public Integer update(Comment entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ICommentDAO commentDao = session.getMapper(ICommentDAO.class);
-            return commentDao.update(entity);
-        }
+        return execute(session -> {
+            commentDAO = getMapper(ICommentDAO.class, session);
+            return commentDAO.update(entity);
+        });
     }
 
     @Override
     public void removeById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ICommentDAO commentDao = session.getMapper(ICommentDAO.class);
-            commentDao.removeById(id);
-        }
+            executeVoid(session -> {
+            commentDAO = getMapper(ICommentDAO.class, session);
+            commentDAO.removeById(id);
+        });
+
     }
 
     @Override
     public List<Comment> getByAuthorId(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ICommentDAO commentDao = session.getMapper(ICommentDAO.class);
-            return commentDao.getByAuthorId(id);
-        }
+        return execute(session -> {
+            commentDAO = getMapper(ICommentDAO.class, session);
+            return commentDAO.getByAuthorId(id);
+        });
     }
 
     @Override
     public List<Comment> getByPostId(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ICommentDAO commentDao = session.getMapper(ICommentDAO.class);
-            return commentDao.getByPostId(id);
-        }
+        return execute(session -> {
+            commentDAO = getMapper(ICommentDAO.class, session);
+            return commentDAO.getByPostId(id);
+        });
     }
-    
+
 }

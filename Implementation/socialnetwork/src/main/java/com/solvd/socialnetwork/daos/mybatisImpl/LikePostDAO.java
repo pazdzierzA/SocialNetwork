@@ -1,52 +1,49 @@
 package com.solvd.socialnetwork.daos.mybatisImpl;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.solvd.socialnetwork.daos.ILikePostDAO;
 import com.solvd.socialnetwork.models.LikePost;
-import com.solvd.socialnetwork.services.mybatisconfigs.ConnectionFactory;
 
-public class LikePostDAO implements ILikePostDAO{
-
+public class LikePostDAO extends AbstractMyBatisDAO implements ILikePostDAO{
+    private ILikePostDAO likePostDAO;
     @Override
     public LikePost getById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ILikePostDAO likePostDAO = session.getMapper(ILikePostDAO.class);
+         return execute(session -> {
+            likePostDAO = getMapper(ILikePostDAO.class, session);
             return likePostDAO.getById(id);
-        }
+        });
     }
 
     @Override
     public Integer save(LikePost entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ILikePostDAO likePostDAO = session.getMapper(ILikePostDAO.class);
+        return execute(session -> {
+            likePostDAO = getMapper(ILikePostDAO.class, session);
             return likePostDAO.save(entity);
-        }
+        });
     }
 
     @Override
     public Integer update(LikePost entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ILikePostDAO likePostDAO = session.getMapper(ILikePostDAO.class);
+        return execute(session -> {
+            likePostDAO = getMapper(ILikePostDAO.class, session);
             return likePostDAO.update(entity);
-        }
+        });
     }
 
     @Override
     public void removeById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ILikePostDAO likePostDAO = session.getMapper( ILikePostDAO.class);
+        executeVoid(session -> {
+            likePostDAO = getMapper(ILikePostDAO.class, session);
             likePostDAO.removeById(id);
-        }
+        });
 
     }
 
     @Override
     public LikePost getByPostId(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            ILikePostDAO likePostDAO = session.getMapper(ILikePostDAO.class);
+        return execute(session -> {
+            likePostDAO = getMapper(ILikePostDAO.class, session);
             return likePostDAO.getByPostId(id);
-        }
+        });
     }
 
     }

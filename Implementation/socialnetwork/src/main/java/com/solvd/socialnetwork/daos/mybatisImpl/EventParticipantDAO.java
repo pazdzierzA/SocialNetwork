@@ -2,56 +2,53 @@ package com.solvd.socialnetwork.daos.mybatisImpl;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.solvd.socialnetwork.daos.IEventParticipantDAO;
 import com.solvd.socialnetwork.models.EventParticipant;
-import com.solvd.socialnetwork.services.mybatisconfigs.ConnectionFactory;
 
-public class EventParticipantDAO implements IEventParticipantDAO {
+public class EventParticipantDAO extends AbstractMyBatisDAO implements IEventParticipantDAO {
+    private IEventParticipantDAO eventParticipantDAO;
 
     @Override
     public EventParticipant getById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IEventParticipantDAO eventParticipantDao = session.getMapper(IEventParticipantDAO.class);
-            return eventParticipantDao.getById(id);
-        }
+        return execute(session -> {
+            eventParticipantDAO = getMapper(IEventParticipantDAO.class, session);
+            return eventParticipantDAO.getById(id);
+        });
     }
 
     @Override
     public Integer save(EventParticipant entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IEventParticipantDAO eventParticipantDao = session.getMapper(IEventParticipantDAO.class);
-            return eventParticipantDao.save(entity);
-        }
-
+        return execute(session -> {
+            eventParticipantDAO = getMapper(IEventParticipantDAO.class, session);
+            return eventParticipantDAO.save(entity);
+        });
     }
 
     @Override
     public Integer update(EventParticipant entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IEventParticipantDAO eventParticipantDao = session.getMapper(IEventParticipantDAO.class);
-            return eventParticipantDao.update(entity);
-        }
-    
+        return execute(session -> {
+            eventParticipantDAO = getMapper(IEventParticipantDAO.class, session);
+            return eventParticipantDAO.update(entity);
+        });
     }
 
     @Override
     public void removeById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IEventParticipantDAO eventParticipantDao = session.getMapper(IEventParticipantDAO.class);
-            eventParticipantDao.removeById(id);
-        }
+         executeVoid(session -> {
+            eventParticipantDAO  = getMapper(IEventParticipantDAO.class, session);
+            eventParticipantDAO .removeById(id);
+        });
+      
 
     }
 
     @Override
     public List<EventParticipant> getByEventId(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IEventParticipantDAO eventParticipantDao = session.getMapper(IEventParticipantDAO.class);
-            return eventParticipantDao.getByEventId(id);
-        }
+        return execute(session -> {
+            eventParticipantDAO = getMapper(IEventParticipantDAO.class, session);
+            return eventParticipantDAO.getByEventId(id);
+        });
 
     }
-    
+
 }

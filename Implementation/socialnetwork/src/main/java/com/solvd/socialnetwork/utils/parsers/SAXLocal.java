@@ -1,4 +1,4 @@
-package com.solvd.socialnetwork.services.parsers;
+package com.solvd.socialnetwork.utils.parsers;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

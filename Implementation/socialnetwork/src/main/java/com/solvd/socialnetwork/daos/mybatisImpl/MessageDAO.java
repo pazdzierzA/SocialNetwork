@@ -1,59 +1,55 @@
 package com.solvd.socialnetwork.daos.mybatisImpl;
 
 import java.util.List;
-
-import org.apache.ibatis.session.SqlSession;
-
 import com.solvd.socialnetwork.daos.IMessageDAO;
 import com.solvd.socialnetwork.models.Message;
-import com.solvd.socialnetwork.services.mybatisconfigs.ConnectionFactory;
 
-public class MessageDAO implements IMessageDAO{
+public class MessageDAO extends AbstractMyBatisDAO implements IMessageDAO {
+    private IMessageDAO messageDAO;
 
     @Override
     public Message getById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IMessageDAO messageDao = session.getMapper(IMessageDAO.class);
-            return messageDao.getById(id);
-        }
-      
+        return execute(session -> {
+            messageDAO = getMapper(IMessageDAO.class, session);
+            return messageDAO.getById(id);
+        });
+
     }
 
     @Override
     public Integer save(Message entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IMessageDAO messageDao = session.getMapper(IMessageDAO.class);
-            return messageDao.save(entity);
-        }
-  
+        return execute(session -> {
+            messageDAO = getMapper(IMessageDAO.class, session);
+            return messageDAO.save(entity);
+        });
+
     }
 
     @Override
     public Integer update(Message entity) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IMessageDAO messageDao = session.getMapper(IMessageDAO.class);
-            return messageDao.update(entity);
-        }
-   
+        return execute(session -> {
+            messageDAO = getMapper(IMessageDAO.class, session);
+            return messageDAO.update(entity);
+        });
+
     }
 
     @Override
     public void removeById(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IMessageDAO messageDao = session.getMapper(IMessageDAO.class);
-            messageDao.removeById(id);
-        }
+        executeVoid(session -> {
+            messageDAO = getMapper(IMessageDAO.class, session);
+            messageDAO.removeById(id);
+        });
 
     }
 
     @Override
     public List<Message> getByUserId(Long id) {
-        try(SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession()){
-            IMessageDAO messageDao = session.getMapper(IMessageDAO.class);
-            return messageDao.getByUserId(id);
-        }
+        return execute(session -> {
+            messageDAO = getMapper(IMessageDAO.class, session);
+            return messageDAO.getByUserId(id);
+        });
 
     }
-    
 
 }

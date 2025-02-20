@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 import com.solvd.socialnetwork.daos.IGroupDAO;
 import com.solvd.socialnetwork.enums.GroupType;
 import com.solvd.socialnetwork.models.Group;
-import com.solvd.socialnetwork.services.connectionpools.ConnectionPool;
+import com.solvd.socialnetwork.utils.connectionpools.ConnectionPool;
 
 public class GroupDAO extends AbstractMySQLDAO<Group> implements IGroupDAO {
 	private final static Logger logger = LogManager.getLogger(GroupDAO.class.getName());
