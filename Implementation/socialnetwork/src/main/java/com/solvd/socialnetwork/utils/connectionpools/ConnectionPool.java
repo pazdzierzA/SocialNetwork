@@ -18,6 +18,9 @@ public class ConnectionPool extends Implementation {
 	private static final String JDBC_URL;
 	private static final String USERNAME;
 	private static final String PASSWORD;
+	private BlockingQueue<Connection> connections;
+	private static Integer size = 10;
+	private static ConnectionPool INSTANCE = null;
 
 	static {
 		String tempUrl = null;
@@ -34,11 +37,6 @@ public class ConnectionPool extends Implementation {
 		USERNAME = tempUserName;
 		PASSWORD = tempPassword;
 	}
-
-	private BlockingQueue<Connection> connections;
-	private static Integer size = 10;
-	private static ConnectionPool INSTANCE = null;
-
 
 	public static ConnectionPool getInstance() {
 		if (INSTANCE == null) {
