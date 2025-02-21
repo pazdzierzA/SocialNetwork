@@ -42,8 +42,8 @@ public class Main {
 		commentService.getById((long) 1);
 
 		// factory pattern
-		GroupMember admin = GroupMemberFactory.createGroupMember(UserRole.ADMIN);
-		GroupMember member = GroupMemberFactory.createGroupMember(UserRole.MEMBER);
+		GroupMember admin = GroupMemberFactory.createGroupMember(UserRole.ADMIN,1L,2L);
+		GroupMember member = GroupMemberFactory.createGroupMember(UserRole.MEMBER,2L,1L);
 		logger.info(admin.toString());
 		logger.info(member.toString());
 
